@@ -1,0 +1,27 @@
+{
+    "name": "blog-definition/blog-definition",
+    "description": "blog-definition/blog-definition",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "BlogDefinition\\BlogDefinition",
+        "label": {
+            "de-DE": "Blog Manager",
+            "en-GB": "Blog Manager"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "BlogDefinition\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BlogDefinition\\Tests\\": "tests/"
+        }
+    }
+}
