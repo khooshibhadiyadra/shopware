@@ -1,0 +1,27 @@
+{
+    "name": "swag-account/swag-account",
+    "description": "swag-account/swag-account",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "SwagAccount\\SwagAccount",
+        "label": {
+            "de-DE": "Skeleton account plugin",
+            "en-GB": "Skeleton account plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "SwagAccount\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SwagAccount\\Tests\\": "tests/"
+        }
+    }
+}
