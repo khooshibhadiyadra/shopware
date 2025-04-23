@@ -2,10 +2,11 @@
 
 use BlogDefinition\Core\Content\Blog\BlogDefinition;
 use Shopware\Core\Content\Product\ProductDefinition;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\ForeignKey;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\PrimaryKey;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
+
 
 class BlogProductDefinition extends MappingEntityDefinition{
 
@@ -26,8 +27,10 @@ class BlogProductDefinition extends MappingEntityDefinition{
     protected function defineFields(): FieldCollection
     {
     return new FieldCollection([
-        (new ForeignKey('blog_id','blogId',BlogDefinition::class))->addFlags(new PrimaryKey()),
-        (new ForeignKey('product_id','productId',ProductDefinition::class))->addFlags(new PrimaryKey())
+        //(new ForeignKey('blog_id','blogId',BlogDefinition::class))->addFlags(new PrimaryKey()),
+        (new FkField('blog_id','blogId',BlogDefinition::class))->addFlags(new PrimaryKey()),
+       // (new ForeignKey('product_id','productId',ProductDefinition::class))->addFlags(new PrimaryKey())
+        (new FkField('product_id','productId',ProductDefinition::class))->addFlags(new PrimaryKey())
     ]);
     }
 
