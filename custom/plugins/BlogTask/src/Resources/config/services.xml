@@ -20,5 +20,8 @@
         <service id="BlogTask\Core\Content\Blog\Aggregate\BlogTranslationDefinition">
             <tag name="shopware.entity.definition" entity="blog_translation" />
         </service>
+        <service id="BlogTask\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="blog_category_translation" />
+        </service>
     </services>
 </container>

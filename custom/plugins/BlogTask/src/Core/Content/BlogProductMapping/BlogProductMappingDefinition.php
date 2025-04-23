@@ -8,6 +8,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
@@ -22,12 +23,12 @@ class BlogProductMappingDefinition extends EntityDefinition
 
 //    public function getEntityClass(): string
 //    {
-//        return BlogProductEntity::class;
+//        return BlogProductMappingEntity::class;
 //    }
 //
 //    public function getCollectionClass(): string
 //    {
-//        return BlogProductCollection::class;
+//        return BlogProductMappingCollection::class;
 //    }
 
     protected function defineFields(): FieldCollection
@@ -35,9 +36,15 @@ class BlogProductMappingDefinition extends EntityDefinition
         return new FieldCollection([
             (new FkField('blog_id','blogId',BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
-
             (new FkField('product_id','productId',ProductDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(ProductDefinition::class))->addFlags(new PrimaryKey(), new Required()),
+            new ManyToManyAssociationField(
+                'products',
+                ProductDefinition::class,
+                BlogProductMappingDefinition::class,
+                'blog_id',
+                'product_id'
+            ),
         ]);
     }
 }

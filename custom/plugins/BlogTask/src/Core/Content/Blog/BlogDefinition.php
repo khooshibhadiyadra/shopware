@@ -43,8 +43,8 @@ class BlogDefinition extends EntityDefinition
             new TranslatedField('description'),
             (new DateField('release_date','releaseDate'))->addFlags(new Required()),
             (new BoolField('active','active'))->addFlags(new Required()),
-            (new TranslatedField('categories','categories'))->addFlags(new Required()),
-            (new TranslatedField('author','author'))->addFlags(new Required()),
+            (new TranslatedField('categories'))->addFlags(new Required()),
+            (new TranslatedField('author'))->addFlags(new Required()),
             new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'),
 
             new ManyToManyAssociationField(
@@ -54,8 +54,6 @@ class BlogDefinition extends EntityDefinition
                 'blog_id',
                 'category_id'
             ),
-
-
             new ManyToManyAssociationField(
                 'products',
                 ProductDefinition::class,

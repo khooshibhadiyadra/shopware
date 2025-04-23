@@ -34,8 +34,6 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
         return new FieldCollection([
             (new StringField('name','name'))->addFlags(new Required()),
             (new LongTextField('description','description'))->addFlags(new Required()),
-            (new FkField('swag_blog_id', 'blogId', BlogDefinition::class))->addFlags(new Required()),
-            (new FkField('language_id', 'languageId', BlogTranslationDefinition::class))->addFlags(new Required()),
         ]);
     }
 }

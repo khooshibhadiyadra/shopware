@@ -10,6 +10,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class BlogCategoryDefinition extends EntityDefinition
@@ -32,7 +33,7 @@ class BlogCategoryDefinition extends EntityDefinition
     {
         return new FieldCollection([
             (new IdField('id','id'))->addFlags(new PrimaryKey(),new Required()),
-            (new StringField('name','name'))->addFlags(new Required()),
+            (new TranslatedField('name'))->addFlags(new Required()),
 
             new ManyToManyAssociationField(
                 'blogs',
