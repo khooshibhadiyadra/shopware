@@ -4,11 +4,25 @@ use BlogDefinition\Core\Content\Blog\BlogDefinition;
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Attribute\ForeignKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Attribute\PrimaryKey;
+use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
-use \Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class BlogProductDefinition extends MappingEntityDefinition{
-//    public function getEntityName():string => 'blog_task';
+
+    public const ENTITY_NAME = 'blog_task_blog_product';
+    public function getEntityName(): string
+    {
+        return self::ENTITY_NAME;
+    }
+
+//    public function getEntityClass(): string{
+//        return BlogProductEntity::class;
+//    }
+//    public function getCollectionClass(): string
+//    {
+//        return BlogProductCollection::class;
+//    }
+
     protected function defineFields(): FieldCollection
     {
     return new FieldCollection([

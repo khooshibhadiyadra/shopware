@@ -2,6 +2,7 @@
 
 namespace BlogDefinition\Core\Content\BlogCategory;
 
+use BlogDefinition\Core\Content\Blog\BlogBlogCategoryDefinition;
 use BlogDefinition\Core\Content\Blog\BlogDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
