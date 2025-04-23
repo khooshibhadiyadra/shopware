@@ -5,6 +5,23 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-
+        <service id="BlogDefinition\Core\Content\Blog\BlogDefinition">
+            <tag name="shopware.entity.definition" entity="blog_task" />
+        </service>
+        <service id="BlogDefinition\Core\Content\BlogCategory\BlogCategoryDefinition">
+            <tag name="shopware.entity.definition" entity="blog_category" />
+        </service>
+        <service id="BlogDefinition\Core\Content\Blog\BlogBlogCategory">
+            <tag name="shopware.entity.definition" entity="blog_task_blog_category" />
+        </service>
+        <service id="BlogDefinition\Core\Content\Blog\BlogProductDefinition">
+            <tag name="shopware.entity.definition" entity="blog_task_blog_product" />
+        </service>
+        <service id="BlogDefinition\Core\Content\Blog\Aggregate\BlogTranslation">
+            <tag name="shopware.entity.definition" entity="blog_task_translation" />
+        </service>
+        <service id="BlogDefinition\Core\Content\BlogCategory\Aggregate\BlogCategoryDefinitionTranslation">
+            <tag name="shopware.entity.definition" entity="blog_category_translation" />
+        </service>
     </services>
 </container>
