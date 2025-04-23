@@ -3,6 +3,12 @@
     "description": "blog-definition/blog-definition",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "iCreative Technologies"
+        }
+    ],
     "require": {
         "shopware/core": "~6.6.0"
     },
@@ -10,6 +16,10 @@
         "shopware-plugin-class": "BlogDefinition\\BlogDefinition",
         "label": {
             "de-DE": "Blog Manager",
+            "en-GB": "Blog Manager"
+        },
+        "description": {
+            "de-DE": "Blogbeheerder",
             "en-GB": "Blog Manager"
         }
     },
