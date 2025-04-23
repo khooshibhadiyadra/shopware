@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace BlogDefinition\Core\Content\BlogDefinition\Extension;
+namespace BlogTask\Core\Content\Extension;
 
-use BlogDefinition\Core\Content\BlogDefinition\Aggregate\BlogTranslationDefinition;
+use BlogTask\Core\Content\Blog\Aggregate\BlogTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\System\Language\LanguageDefinition;
 
-class  LanguageExtension extends EntityExtension
+class LanguageExtension extends EntityExtension
 {
     public function extendFields(FieldCollection $collection): void
     {
@@ -16,7 +16,7 @@ class  LanguageExtension extends EntityExtension
             new OneToManyAssociationField(
                 'BlogTranslation',
                 BlogTranslationDefinition::class,
-                'blog_id'
+                'blog_id',
             )
         );
     }

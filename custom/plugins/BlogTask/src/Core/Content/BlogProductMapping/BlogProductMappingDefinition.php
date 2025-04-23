@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace BlogDefinition\Core\Content\BlogDefinition;
+namespace BlogTask\Core\Content\BlogProductMapping;
 
-use BlogDefinition\BlogDefinition;
+use BlogTask\Core\Content\Blog\BlogDefinition;
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
@@ -11,7 +11,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-class BlogProductDefinition extends EntityDefinition
+class BlogProductMappingDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog_product';
 
@@ -35,6 +35,7 @@ class BlogProductDefinition extends EntityDefinition
         return new FieldCollection([
             (new FkField('blog_id','blogId',BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
+
             (new FkField('product_id','productId',ProductDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(ProductDefinition::class))->addFlags(new PrimaryKey(), new Required()),
         ]);

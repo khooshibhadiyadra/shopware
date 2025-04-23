@@ -1,6 +1,6 @@
 {
-    "name": "blog-definition/blog-definition",
-    "description": "blog-definition/blog-definition",
+    "name": "blog-task/blog-task",
+    "description": "blog-task/blog-task",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "proprietary",
@@ -13,10 +13,10 @@
         "shopware/core": "~6.6.0"
     },
     "extra": {
-        "shopware-plugin-class": "BlogDefinition\\BlogDefinition",
+        "shopware-plugin-class": "BlogTask\\BlogTask",
         "label": {
-            "de-DE": "Blog Manager",
-            "en-GB": "Blog Manager"
+            "de-DE": "blog task",
+            "en-GB": "blog task"
         },
         "description": {
             "de-DE": "Blogbeheerder",
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BlogDefinition\\": "src/"
+            "BlogTask\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BlogDefinition\\Tests\\": "tests/"
+            "BlogTask\\Tests\\": "tests/"
         }
     }
 }

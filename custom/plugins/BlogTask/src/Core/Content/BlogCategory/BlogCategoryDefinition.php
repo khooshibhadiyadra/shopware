@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace BlogDefinition\Core\Content\BlogDefinition;
+namespace BlogTask\Core\Content\BlogCategory;
 
-use BlogDefinition\BlogDefinition;
+use BlogTask\Core\Content\Blog\BlogDefinition;
+use BlogTask\Core\Content\BlogCategoryMapping\BlogCategoryMappingDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
@@ -10,6 +11,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
+
 class BlogCategoryDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog_category';
@@ -31,10 +33,11 @@ class BlogCategoryDefinition extends EntityDefinition
         return new FieldCollection([
             (new IdField('id','id'))->addFlags(new PrimaryKey(),new Required()),
             (new StringField('name','name'))->addFlags(new Required()),
+
             new ManyToManyAssociationField(
                 'blogs',
                 BlogDefinition::class,
-                BlogCategoryBlogDefinition::class,
+                BlogCategoryMappingDefinition::class,
                 'category_id',
                 'blog_id'
             ),
