@@ -3,14 +3,15 @@
 namespace BlogTask\Core\Content\BlogCategory;
 
 use BlogTask\Core\Content\Blog\BlogDefinition;
+use BlogTask\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition;
 use BlogTask\Core\Content\BlogCategoryMapping\BlogCategoryMappingDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class BlogCategoryDefinition extends EntityDefinition
@@ -33,8 +34,8 @@ class BlogCategoryDefinition extends EntityDefinition
     {
         return new FieldCollection([
             (new IdField('id','id'))->addFlags(new PrimaryKey(),new Required()),
-            (new TranslatedField('name'))->addFlags(new Required()),
-
+            (new TranslatedField('name')),
+            new TranslationsAssociationField(BlogCategoryTranslationDefinition::class, 'blog_id'),
             new ManyToManyAssociationField(
                 'blogs',
                 BlogDefinition::class,

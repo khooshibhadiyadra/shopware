@@ -3,6 +3,7 @@
 namespace BlogTask\Core\Content\BlogProductMapping;
 
 use BlogTask\Core\Content\Blog\BlogDefinition;
+use BlogTask\Core\Content\BlogCategoryMapping\BlogCategoryMappingDefinition;
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
@@ -38,13 +39,6 @@ class BlogProductMappingDefinition extends EntityDefinition
             (new ReferenceVersionField(BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new FkField('product_id','productId',ProductDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(ProductDefinition::class))->addFlags(new PrimaryKey(), new Required()),
-            new ManyToManyAssociationField(
-                'products',
-                ProductDefinition::class,
-                BlogProductMappingDefinition::class,
-                'blog_id',
-                'product_id'
-            ),
         ]);
     }
 }

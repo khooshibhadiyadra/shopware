@@ -12,7 +12,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationFiel
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-
 class BlogCategoryMappingDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog_category_blog';
@@ -39,13 +38,6 @@ class BlogCategoryMappingDefinition extends EntityDefinition
             (new ReferenceVersionField(BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new FkField('category_id','categoryId',BlogCategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(BlogCategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
-            new ManyToManyAssociationField(
-                'categories',
-                BlogCategoryDefinition::class,
-                BlogCategoryMappingDefinition::class,
-                'blog_id',
-                'category_id'
-            ),
         ]);
     }
 }

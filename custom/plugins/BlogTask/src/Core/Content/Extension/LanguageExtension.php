@@ -3,6 +3,7 @@
 namespace BlogTask\Core\Content\Extension;
 
 use BlogTask\Core\Content\Blog\Aggregate\BlogTranslationDefinition;
+use BlogTask\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
@@ -14,9 +15,16 @@ class LanguageExtension extends EntityExtension
     {
         $collection->add(
             new OneToManyAssociationField(
+                'BlogCategoryTranslation',
+                BlogCategoryTranslationDefinition::class,
+                'blog_id',
+            ),
+        );
+        $collection->add(
+            new OneToManyAssociationField(
                 'BlogTranslation',
                 BlogTranslationDefinition::class,
-                'blog_id',
+                'blog_id'
             )
         );
     }

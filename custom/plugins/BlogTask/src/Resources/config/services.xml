@@ -23,5 +23,11 @@
         <service id="BlogTask\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition">
             <tag name="shopware.entity.definition" entity="blog_category_translation" />
         </service>
+        <service id="BlogTask\Core\Content\Extension\LanguageExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="BlogTask\Core\Content\Extension\ProductExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
     </services>
 </container>
