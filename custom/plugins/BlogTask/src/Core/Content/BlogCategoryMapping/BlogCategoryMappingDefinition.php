@@ -4,15 +4,11 @@ namespace BlogTask\Core\Content\BlogCategoryMapping;
 
 use BlogTask\Core\Content\Blog\BlogDefinition;
 use BlogTask\Core\Content\BlogCategory\BlogCategoryDefinition;
-use BlogTask\Core\Content\BlogProductMapping\BlogProductMappingDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class BlogCategoryMappingDefinition extends EntityDefinition

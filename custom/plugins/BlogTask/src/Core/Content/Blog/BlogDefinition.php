@@ -14,7 +14,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
@@ -45,7 +44,7 @@ class BlogDefinition extends EntityDefinition
             new TranslatedField('description'),
             (new DateField('release_date','releaseDate'))->addFlags(new Required()),
             (new BoolField('active','active'))->addFlags(new Required()),
-//            (new StringField('categories','categories'))->addFlags(new Required()),
+            (new StringField('categories','categories'))->addFlags(new Required()),
             (new StringField('author','author'))->addFlags(new Required()),
             new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'),
 
