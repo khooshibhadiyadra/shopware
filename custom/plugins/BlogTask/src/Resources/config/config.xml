@@ -7,9 +7,9 @@
         <title>Minimal configuration</title>
 
         <input-field type="text">
-            <name>textField</name>
-            <label>Test field with default value</label>
-            <defaultValue>test</defaultValue>
+<!--            <name>textField</name>-->
+<!--            <label>Test field with default value</label>-->
+<!--            <defaultValue>test</defaultValue>-->
         </input-field>
     </card>
 
