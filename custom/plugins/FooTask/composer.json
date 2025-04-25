@@ -1,0 +1,36 @@
+{
+    "name": "foo-task/foo-task",
+    "description": "foo-task/foo-task",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "iCreative Technologies"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "FooTask\\FooTask",
+        "label": {
+            "de-DE": "foo plugin",
+            "en-GB": "foo plugin"
+        },
+        "description": {
+            "de-DE": "footask",
+            "en-GB": "footask"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "FooTask\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FooTask\\Tests\\": "tests/"
+        }
+    }
+}

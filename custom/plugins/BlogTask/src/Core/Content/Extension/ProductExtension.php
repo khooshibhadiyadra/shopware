@@ -24,7 +24,6 @@ class ProductExtension extends EntityExtension
                 'blog_id'
             )
         );
-
         $collection->add(
             new OneToManyAssociationField(
                 'blogProductMappings',
