@@ -4,11 +4,7 @@
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
 
     <card>
-        <title>Minimal configuration</title>
 
-        <input-field type="text">
-
-        </input-field>
     </card>
 
 </config>
