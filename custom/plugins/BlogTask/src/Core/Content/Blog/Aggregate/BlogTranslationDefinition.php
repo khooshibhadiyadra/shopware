@@ -4,11 +4,13 @@ namespace BlogTask\Core\Content\Blog\Aggregate;
 
 use BlogTask\Core\Content\Blog\BlogDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
+use Shopware\Core\System\Language\LanguageDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
+
 class BlogTranslationDefinition extends EntityTranslationDefinition
 {
     const ENTITY_NAME = 'blog_translation';
@@ -32,10 +34,10 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
-            (new StringField('name','name'))->addFlags(new Required()),
-            (new LongTextField('description','description'))->addFlags(new Required()),
-//            (new FkField('blog_id', 'blogId', BlogDefinition::class))->addFlags(new Required()),
-//            (new FkField('language_id', 'languageId', BlogTranslationDefinition::class))->addFlags(new Required()),
+            (new StringField('name', 'name'))->addFlags(new Required()),
+            (new LongTextField('description', 'description'))->addFlags(new Required()),
+            (new FkField('blog_id', 'blogId', BlogDefinition::class))->addFlags(new Required()),
+            (new FkField('language_id', 'languageId', LanguageDefinition::class))->addFlags(new Required()),
         ]);
     }
 }

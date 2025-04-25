@@ -37,8 +37,6 @@ class BlogCategoryMappingDefinition extends EntityDefinition
             (new FkField('blog_category_id','categoryId',BlogCategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             new ManyToOneAssociationField('blogCategory', 'blog_category_id', BlogCategoryDefinition::class, 'id'),
             new ManyToOneAssociationField('blog','blog_id',BlogDefinition::class,'id'),
-//            new OneToManyAssociationField('blog',BlogDefinition::class,'id'),
-//            new OneToManyAssociationField('blogCategory',BlogCategoryDefinition::class,'id'),
         ]);
     }
 }
