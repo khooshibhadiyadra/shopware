@@ -30,8 +30,6 @@ class BlogCategoryDefinition extends EntityDefinition
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
             new TranslatedField('name'),
             new TranslationsAssociationField(BlogCategoryTranslationDefinition::class, 'blog_category_id'),
-
-            // Correct reverse side of many-to-many with blogs
             new ManyToManyAssociationField(
                 'blogs',
                 BlogDefinition::class,
