@@ -3,18 +3,11 @@
 namespace BlogTask\Core\Content\BlogCategory\Aggregate;
 
 use BlogTask\Core\Content\BlogCategory\BlogCategoryDefinition;
-//use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
-//use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
-//use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
-//use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-//use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
-//use Shopware\Core\System\Language\LanguageDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-//use BlogTask\Core\Content\BlogCategory\BlogCategoryDefinition;
 use Shopware\Core\System\Language\LanguageDefinition;
 
 class BlogCategoryTranslationDefinition extends EntityTranslationDefinition
@@ -25,18 +18,12 @@ class BlogCategoryTranslationDefinition extends EntityTranslationDefinition
     {
         return self::ENTITY_NAME;
     }
-//    public function getEntityClass(): string
-//    {
-//        return BlogCategoryTranslationEntity::class;
-//    }
-//    public function getCollectionClass(): string
-//    {
-//        return BlogCategoryTranslationCollection::class;
-//    }
+
     protected function getParentDefinitionClass(): string
     {
         return BlogCategoryDefinition::class;
     }
+
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

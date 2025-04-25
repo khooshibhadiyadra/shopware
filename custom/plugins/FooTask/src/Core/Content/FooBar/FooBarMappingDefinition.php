@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace FooTask\Core\Content\FooBarMappingDefinition;
+namespace FooTask\Core\Content\FooBar;
 
-use FooTask\Core\Content\BarDefintion\BarDefinition;
-use FooTask\Core\Content\FooDefinition\FooDefinition;
+use FooTask\Core\Content\Bar\BarDefinition;
+use FooTask\Core\Content\Foo\FooDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;

@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace BlogTask\Core\Content\Blog\Aggregate;
 
@@ -19,18 +20,12 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
     {
         return self::ENTITY_NAME;
     }
-//    public function getEntityClass(): string
-//    {
-//        return BlogTranslationEntity::class;
-//    }
-//    public function getCollectionClass(): string
-//    {
-//        return BlogTranslationCollection::class;
-//    }
+
     protected function getParentDefinitionClass(): string
     {
         return BlogDefinition::class;
     }
+
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

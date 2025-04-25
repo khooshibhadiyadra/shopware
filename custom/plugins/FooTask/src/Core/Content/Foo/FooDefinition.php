@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace FooTask\Core\Content\FooDefinition;
+namespace FooTask\Core\Content\Foo;
 
-    use FooTask\Core\Content\BarDefintion\BarDefinition;
-    use FooTask\Core\Content\FooBarMapping\FooBarMappingDefinition;
+    use FooTask\Core\Content\Bar\BarDefinition;
+    use FooTask\Core\Content\FooBar\FooBarMappingDefinition;
+
     use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
     use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
     use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
@@ -13,7 +14,7 @@ namespace FooTask\Core\Content\FooDefinition;
 
     class FooDefinition extends EntityDefinition
     {
-        public const ENTITY_NAME = 'foo_definition';
+        public const ENTITY_NAME = 'foo';
 
         public function getEntityName(): string
         {

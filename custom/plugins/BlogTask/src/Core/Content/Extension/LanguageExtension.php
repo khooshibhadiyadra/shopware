@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace BlogTask\Core\Content\Extension;
 
@@ -17,7 +18,7 @@ class LanguageExtension extends EntityExtension
             new OneToManyAssociationField(
                 'BlogCategoryTranslation',
                 BlogCategoryTranslationDefinition::class,
-                'blog_id',
+                'blog_category_id',
             ),
         );
         $collection->add(
@@ -28,6 +29,7 @@ class LanguageExtension extends EntityExtension
             )
         );
     }
+
     public function getDefinitionClass(): string
     {
         return LanguageDefinition::class;

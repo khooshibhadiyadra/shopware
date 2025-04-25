@@ -5,6 +5,14 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-
+        <service id="FooTask\Core\Content\Bar\BarDefinition">
+            <tag name="shopware.entity.definition" entity="bar" />
+        </service>
+        <service id="FooTask\Core\Content\Foo\FooDefinition">
+            <tag name="shopware.entity.definition" entity="foo" />
+        </service>
+        <service id="FooTask\Core\Content\FooBar\FooBarMappingDefinition">
+            <tag name="shopware.entity.definition" entity="foo_bar" />
+        </service>
     </services>
 </container>
