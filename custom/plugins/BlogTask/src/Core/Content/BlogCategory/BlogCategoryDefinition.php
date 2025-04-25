@@ -14,16 +14,13 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationFiel
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-
 class BlogCategoryDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog_category';
-
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
     }
-
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

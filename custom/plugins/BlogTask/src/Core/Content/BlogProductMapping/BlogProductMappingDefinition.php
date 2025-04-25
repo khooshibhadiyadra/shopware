@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace BlogTask\Core\Content\BlogProductMapping;
 
@@ -11,7 +10,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-
 class BlogProductMappingDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog_product';
@@ -20,7 +18,6 @@ class BlogProductMappingDefinition extends EntityDefinition
     {
         return self::ENTITY_NAME;
     }
-
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

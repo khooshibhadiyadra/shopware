@@ -13,17 +13,14 @@ use Shopware\Core\System\Language\LanguageDefinition;
 class BlogCategoryTranslationDefinition extends EntityTranslationDefinition
 {
     const ENTITY_NAME = 'blog_category_translation';
-
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
     }
-
     protected function getParentDefinitionClass(): string
     {
         return BlogCategoryDefinition::class;
     }
-
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

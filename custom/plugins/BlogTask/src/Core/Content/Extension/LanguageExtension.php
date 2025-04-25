@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace BlogTask\Core\Content\Extension;
 
@@ -9,7 +8,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\System\Language\LanguageDefinition;
-
 class LanguageExtension extends EntityExtension
 {
     public function extendFields(FieldCollection $collection): void
@@ -29,7 +27,6 @@ class LanguageExtension extends EntityExtension
             )
         );
     }
-
     public function getDefinitionClass(): string
     {
         return LanguageDefinition::class;

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace BlogTask\Core\Content\Blog\Aggregate;
 
@@ -11,7 +10,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\System\Language\LanguageDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
-
 class BlogTranslationDefinition extends EntityTranslationDefinition
 {
     const ENTITY_NAME = 'blog_translation';
@@ -20,12 +18,10 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
     {
         return self::ENTITY_NAME;
     }
-
     protected function getParentDefinitionClass(): string
     {
         return BlogDefinition::class;
     }
-
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

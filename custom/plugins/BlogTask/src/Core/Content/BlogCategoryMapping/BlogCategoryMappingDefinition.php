@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace BlogTask\Core\Content\BlogCategoryMapping;
 
@@ -11,16 +9,13 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-
 class BlogCategoryMappingDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog_category_blog';
-
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
     }
-
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

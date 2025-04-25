@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace BlogTask\Core\Content\Extension;
 
@@ -9,7 +8,6 @@ use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-
 class ProductExtension extends EntityExtension
 {
     public function extendFields(FieldCollection $collection): void
@@ -24,7 +22,6 @@ class ProductExtension extends EntityExtension
             )
         );
     }
-
     public function getDefinitionClass(): string
     {
         return ProductDefinition::class;

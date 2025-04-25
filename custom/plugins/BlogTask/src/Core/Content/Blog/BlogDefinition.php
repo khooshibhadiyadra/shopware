@@ -1,9 +1,6 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace BlogTask\Core\Content\Blog;
-
 
 use BlogTask\Core\Content\Blog\Aggregate\BlogTranslationDefinition;
 use BlogTask\Core\Content\BlogCategory\BlogCategoryDefinition;
@@ -21,16 +18,13 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-
 class BlogDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog';
-
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
     }
-
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
@@ -41,9 +35,7 @@ class BlogDefinition extends EntityDefinition
             (new BoolField('active', 'active'))->addFlags(new Required()),
             (new StringField('categories', 'categories'))->addFlags(new Required()),
             (new StringField('author', 'author'))->addFlags(new Required()),
-
             new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'),
-
 
             new ManyToManyAssociationField(
                 'blogCategories',
