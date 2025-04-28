@@ -14,7 +14,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
@@ -27,13 +26,13 @@ class BlogDefinition extends EntityDefinition
     {
         return self::ENTITY_NAME;
     }
-//    public function getEntityClass(): string{
-//        return BlogEntity::class;
-//    }
-//    public function getCollectionClass(): string
-//    {
-//        return BlogCollection::class;
-//    }
+    public function getEntityClass(): string{
+        return BlogEntity::class;
+    }
+    public function getCollectionClass(): string
+    {
+        return BlogCollection::class;
+    }
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
@@ -42,16 +41,8 @@ class BlogDefinition extends EntityDefinition
             new TranslatedField('description'),
             (new DateField('release_date', 'releaseDate'))->addFlags(new Required()),
             (new BoolField('active', 'active'))->addFlags(new Required()),
-            (new StringField('categories', 'categories'))->addFlags(new Required()),
-            (new StringField('author', 'author'))->addFlags(new Required()),
+            new TranslatedField('author'),
             new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'),
-            new ManyToManyAssociationField(
-                'blogCategories',
-                BlogCategoryDefinition::class,
-                BlogCategoryMappingDefinition::class,
-                'blog_id',
-                'blog_category_id'
-            ),
             new ManyToManyAssociationField(
                 'products',
                 ProductDefinition::class,
@@ -59,6 +50,14 @@ class BlogDefinition extends EntityDefinition
                 'blog_id',
                 'product_id'
             ),
+            new ManyToManyAssociationField(
+                'blogCategories',
+                BlogCategoryDefinition::class,
+                BlogCategoryMappingDefinition::class,
+                'blog_id',
+                'blog_category_id'
+            ),
+            (new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'))->addFlags(new Required()),
         ]);
     }
 }
