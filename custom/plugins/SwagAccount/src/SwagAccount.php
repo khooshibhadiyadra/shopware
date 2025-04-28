@@ -23,8 +23,8 @@ class SwagAccount extends Plugin
         if ($uninstallContext->keepUserData()) {
             return;
         }
-
-        // Remove or deactivate the data created by the plugin
+        $connection = $this->container->get('Doctrine\DBAL\Connection');
+        $connection->executeQuery('DROP TABLE IF EXISTS swag_account,swag_account_translation');
     }
 
     public function activate(ActivateContext $activateContext): void

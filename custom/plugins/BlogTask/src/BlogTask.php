@@ -23,8 +23,8 @@ class BlogTask extends Plugin
         if ($uninstallContext->keepUserData()) {
             return;
         }
-
-        // Remove or deactivate the data created by the plugin
+         $connection = $this->container->get('Doctrine\DBAL\Connection');
+         $connection->executeQuery('DROP TABLE IF EXISTS blog,blog_category,blog_category_blog,blog_product,blog_translation,blog_category_translation');
     }
 
     public function activate(ActivateContext $activateContext): void
