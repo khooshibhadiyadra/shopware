@@ -1,0 +1,24 @@
+{
+  "blog-module": {
+    "plugin": {
+      "name": "Blog-Kategorien",
+      "title": "Blog-Kategorien"
+    },
+    "list": {
+      "pageTitle": "Blog-Kategorien",
+      "name": "Blog-Kategorie Name",
+      "createdAt": "Erstellt am",
+      "updatedAt": "aktualisiert unter",
+      "createButton": "Neue Kategorie erstellen",
+      "searchType": "Blog-Kategorien"
+    },
+    "detail": {
+      "pageTitleCreate": "Blog-Kategorie erstellen",
+      "pageTitleEdit": "Blog-Kategorie bearbeiten",
+      "generalCardTitle": "Allgemein",
+      "nameLabel": "Name",
+      "save": "Speichern Sie",
+      "cancel": "Abbrechen"
+    }
+  }
+}

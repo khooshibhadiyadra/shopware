@@ -1,0 +1,36 @@
+<sw-page>
+    <template #smart-bar-header>
+        <h2><h2>{{ isNew ? $tc('blog-module.detail.pageTitleCreate') : $tc('blog-module.detail.pageTitleEdit') }}</h2></h2>
+    </template>
+
+    <template #smart-bar-actions>
+        <sw-button @click="onCancel">
+            {{ $tc('blog-module.detail.cancel') }}
+        </sw-button>
+        <sw-button-process
+                :is-loading="isLoading"
+                v-model:process-success="isSaveSuccessful"
+                variant="primary"
+                @click="onSave">
+            {{ $tc('blog-module.detail.save') }}
+        </sw-button-process>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch
+                :save-changes-function="saveOnLanguageChange"
+                @on-change="onChangeLanguage"
+        >
+        </sw-language-switch>
+    </template>
+
+    <template #content>
+        <sw-card :title="$tc('blog-module.detail.generalCardTitle')" v-if="blogCategory">
+            <sw-text-field
+                    v-model:value="blogCategory.name"
+                    :label="$tc('blog-module.detail.nameLabel')"
+                    required>
+            </sw-text-field>
+        </sw-card>
+    </template>
+</sw-page>

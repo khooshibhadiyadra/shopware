@@ -4,9 +4,9 @@ namespace BlogTask\Core\Content\Blog;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
+use BlogTask\Core\Content\Blog\Aggregate\BlogTranslationCollection;
 use Shopware\Core\Content\Product\ProductCollection;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
+use BlogTask\Core\Content\BlogCategory\BlogCategoryCollection;
 
 class BlogEntity extends Entity
 {
@@ -43,7 +43,7 @@ class BlogEntity extends Entity
     protected $author;
 
     /**
-     * @var EntityCollection
+     * @var BlogTranslationCollection
      */
     protected $translations;
 
@@ -53,7 +53,7 @@ class BlogEntity extends Entity
     protected $products;
 
     /**
-     * @var EntityCollection|null
+     * @var BlogCategoryCollection|null
      */
     protected $blogCategories;
 
@@ -132,12 +132,12 @@ class BlogEntity extends Entity
         $this->author = $author;
     }
 
-    public function getTranslations(): EntityCollection
+    public function getTranslations(): BlogTranslationCollection
     {
         return $this->translations;
     }
 
-    public function setTranslations(EntityCollection $translations): void
+    public function setTranslations(BlogTranslationCollection $translations): void
     {
         $this->translations = $translations;
     }
@@ -152,12 +152,12 @@ class BlogEntity extends Entity
         $this->products = $products;
     }
 
-    public function getBlogCategories(): ?EntityCollection
+    public function getBlogCategories(): ?BlogCategoryCollection
     {
         return $this->blogCategories;
     }
 
-    public function setBlogCategories(?EntityCollection $blogCategories): void
+    public function setBlogCategories(?BlogCategoryCollection $blogCategories): void
     {
         $this->blogCategories = $blogCategories;
     }

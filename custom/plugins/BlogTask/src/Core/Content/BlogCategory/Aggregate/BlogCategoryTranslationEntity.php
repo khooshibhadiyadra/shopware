@@ -4,7 +4,7 @@ namespace BlogTask\Core\Content\BlogCategory\Aggregate;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Framework\Struct\ArrayEntity;
+use BlogTask\Core\Content\BlogCategory\BlogCategoryEntity;
 use Shopware\Core\System\Language\LanguageEntity;
 
 class BlogCategoryTranslationEntity extends Entity
@@ -37,7 +37,7 @@ class BlogCategoryTranslationEntity extends Entity
     protected $languageId;
 
     /**
-     * @var ArrayEntity|null
+     * @var BlogCategoryEntity|null
      */
     protected $blogCategory;
 
@@ -96,12 +96,12 @@ class BlogCategoryTranslationEntity extends Entity
         $this->languageId = $languageId;
     }
 
-    public function getBlogCategory(): ?ArrayEntity
+    public function getBlogCategory(): ?BlogCategoryEntity
     {
         return $this->blogCategory;
     }
 
-    public function setBlogCategory(?ArrayEntity $blogCategory): void
+    public function setBlogCategory(?BlogCategoryEntity $blogCategory): void
     {
         $this->blogCategory = $blogCategory;
     }

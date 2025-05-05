@@ -35,7 +35,6 @@ class BlogCategoryDefinition extends EntityDefinition
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
             new TranslatedField('name'),
-            (new StringField('name','name'))->addFlags(new Required()),
 
             new ManyToManyAssociationField(
                 'blogs',

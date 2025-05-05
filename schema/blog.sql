@@ -10,7 +10,6 @@ CREATE TABLE `blog` (
 
 CREATE TABLE `blog_category` (
     `id` BINARY(16) NOT NULL,
-    `name` VARCHAR(255) NOT NULL,
     `created_at` DATETIME(3) NOT NULL,
     `updated_at` DATETIME(3) NULL,
     PRIMARY KEY (`id`),

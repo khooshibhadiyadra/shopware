@@ -1,0 +1,37 @@
+<sw-page>
+    <template #search-bar>
+        <sw-search-bar
+                :initial-search="term"
+                @search="onSearch">
+            {{ $tc('blog-module.list.searchType') }}
+        </sw-search-bar>
+    </template>
+
+    <template #smart-bar-header>
+        <h2>{{ $tc('blog-module.list.pageTitle') }}</h2>
+    </template>
+
+    <template #smart-bar-actions>
+        <sw-button @click="onCreateNewCategory" variant="primary">
+            {{ $tc('blog-module.list.createButton') }}
+        </sw-button>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch @on-change="onChangeLanguage" >
+        </sw-language-switch>
+    </template>
+
+    <template #content>
+        <div>
+            <sw-entity-listing
+                    detail-route="blog.category.detail"
+                    :is-loading="isLoading"
+                    :columns="blogCategoryColumns"
+                    :repository="blogCategoryRepository"
+                    :items="blogCategories"
+            >
+            </sw-entity-listing>
+        </div>
+    </template>
+</sw-page>
