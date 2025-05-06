@@ -1,0 +1,30 @@
+{
+  "blog": {
+    "module": {
+      "name": "Blog",
+      "description": "Manage Blogs",
+      "label": "Blog"
+    },
+    "general": {
+      "mainMenuItemGeneral": "Blog",
+      "descriptionTextModule": "General",
+      "createButton": "Create New Blog",
+      "cancelButton": "Cancel",
+      "saveButton": "Save",
+      "createTitle": "Create Blog",
+      "editTitle": "Edit Blog"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "active": "Active",
+      "author": "Author",
+      "releaseDate": "Release Date",
+      "categories": "Blog Categories",
+      "products": "Products"
+    },
+    "list": {
+      "title": "Blogs"
+    }
+  }
+}

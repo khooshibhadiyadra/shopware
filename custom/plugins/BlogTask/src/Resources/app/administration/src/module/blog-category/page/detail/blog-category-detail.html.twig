@@ -28,9 +28,12 @@
         <sw-card :title="$tc('blog-module.detail.generalCardTitle')" v-if="blogCategory">
             <sw-text-field
                     v-model:value="blogCategory.name"
-                    :label="$tc('blog-module.detail.nameLabel')"
-                    required>
+                    :label="$tc('blog-module.detail.title')"
+                    required
+                    :placeholder="$tc('blog-module.detail.title')"
+            >
             </sw-text-field>
+
         </sw-card>
     </template>
 </sw-page>

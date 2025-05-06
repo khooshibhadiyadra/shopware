@@ -1,53 +1,58 @@
-import template from './blog-category-detail.html.twig';
+import template from './blog-detail.html.twig';
 
-const { Component } = Shopware;
+const { Criteria } = Shopware.Data;
 
-Component.register('blog-category-detail', {
+Shopware.Component.register('blog-detail', {
     template,
 
     inject: ['repositoryFactory'],
 
     props: {
-        blogCategoryId: {
+        blogId: {
             type: String,
             required: false,
             default: null
         }
     },
+
     data() {
         return {
-            blogCategory: null,
+            blog: null,
             isLoading: false,
             isSaveSuccessful: false
         };
     },
+
     computed: {
         isNew() {
-            return !this.blogCategoryId;
+            return !this.blogId;
         },
 
-        blogCategoryRepository() {
-            return this.repositoryFactory.create('blog_category');
-        }
+        blogRepository() {
+            return this.repositoryFactory.create('blog');
+        },
     },
 
     created() {
-        this.loadBlogCategory();
+        this.loadBlog();
     },
 
     methods: {
-        async loadBlogCategory() {
+        async loadBlog() {
             this.isLoading = true;
-
             try {
                 if (this.isNew) {
-                    this.blogCategory = this.blogCategoryRepository.create(Shopware.Context.api);
+                    this.blog = this.blogRepository.create(Shopware.Context.api);
                 } else {
-                    this.blogCategory = await this.blogCategoryRepository.get(this.blogCategoryId, Shopware.Context.api);
+                    const criteria = new Criteria();
+                    // criteria.addAssociation('categories');
+                    criteria.addAssociation('blogCategories');
+                    criteria.addAssociation('products');
 
+                    this.blog = await this.blogRepository.get(this.blogId, Shopware.Context.api, criteria);
                 }
             } catch (e) {
-                console.error('Failed to load blog category', e);
+                console.error('Failed to load blog', e);
             } finally {
                 this.isLoading = false;
             }
@@ -55,22 +60,22 @@ Component.register('blog-category-detail', {
 
         async onSave() {
             this.isLoading = true;
-            // console.log(this.blogCategory);
-
             try {
-                await this.blogCategoryRepository.save(this.blogCategory, Shopware.Context.api);
+                await this.blogRepository.save(this.blog, Shopware.Context.api);
                 this.isSaveSuccessful = true;
+
                 if (this.isNew) {
-                    this.$router.push({ name: 'blog.category.index', params: { id: this.blogCategory.id } });
+                    this.$router.push({ name: 'blog.module.detail', params: { id: this.blog.id } });
                 } else {
-                    await this.loadBlogCategory();
-                    this.$router.push({ name: 'blog.category.index'});
+                    await this.loadBlog();
+                    this.$router.push({ name: 'blog.module.detail' });
                 }
             } catch (e) {
                 this.createNotificationError({
                     message: this.$tc('global.notification.notificationSaveErrorMessageRequiredFieldsInvalid'),
                 });
                 console.error('Save failed', e);
+
             } finally {
                 this.isLoading = false;
             }
@@ -81,12 +86,11 @@ Component.register('blog-category-detail', {
         },
 
         async onChangeLanguage() {
-            await this.loadBlogCategory();
+            await this.loadBlog();
         },
 
         onCancel() {
-            this.$router.push({ name: 'blog.category.index' });
+            this.$router.push({ name: 'blog.module.index' });
         }
     }
 });
-

@@ -2,6 +2,7 @@ import template from './blog-category-list.html.twig';
 
 const { Component } = Shopware;
 const { Criteria } = Shopware.Data;
+
 const { Mixin } = Shopware;
 
 Component.register('blog-category-list', {
@@ -16,7 +17,7 @@ Component.register('blog-category-list', {
     data() {
         return {
             blogCategories: null,
-            isLoading: false,
+            isLoading: true,
             sortBy: 'name',
             sortDirection: 'ASC',
             total: 0,
@@ -53,13 +54,15 @@ Component.register('blog-category-list', {
         },
 
         blogCategoryCriteria() {
+
             const criteria = new Criteria(this.page, this.limit);
             criteria.setTerm(this.term);
             criteria.addSorting(
                 Criteria.sort(this.sortBy, this.sortDirection, this.naturalSorting)
             );
             return criteria;
-        }
+            // console.log(criteria);
+        },
     },
 
     watch: {
@@ -80,22 +83,20 @@ Component.register('blog-category-list', {
     },
 
     methods: {
+
         async getList() {
-            // console.log(this.blogCategories);
             this.isLoading = true;
-            // alert(this.total);
+
             try {
-
+                // const criteria=new Criteria();
                 const criteria = await this.addQueryScores(this.term, this.blogCategoryCriteria);
-
                 if (!this.entitySearchable) {
                     this.isLoading = false;
                     return;
                 }
-
                 const result = await this.blogCategoryRepository.search(criteria);
-
                 this.blogCategories = result;
+                console.log(result);
                 this.total = result.total;
             } catch (error) {
                 console.error('Failed to fetch categories:', error);

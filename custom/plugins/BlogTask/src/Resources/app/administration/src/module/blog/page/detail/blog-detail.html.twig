@@ -1,0 +1,72 @@
+<sw-page>
+    <template #smart-bar-header>
+        <h2>{{ isNew ? $tc('blog.general.createTitle') : $tc('blog.general.editTitle') }}</h2>
+    </template>
+
+    <template #smart-bar-actions>
+        <sw-button @click="onCancel">
+            {{ $tc('blog.general.cancelButton') }}
+        </sw-button>
+        <sw-button-process
+                :is-loading="isLoading"
+                v-model:process-success="isSaveSuccessful"
+                variant="primary"
+                @click="onSave">
+            {{ $tc('blog.general.saveButton') }}
+        </sw-button-process>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch
+                :save-changes-function="saveOnLanguageChange"
+                @on-change="onChangeLanguage"
+        >
+        </sw-language-switch>
+    </template>
+
+    <template #content>
+        <sw-card :title="$tc('blog.general.descriptionTextModule')" v-if="blog">
+            <sw-text-field
+                    v-model:value="blog.name"
+                    :label="$tc('blog.fields.name')"
+                    required>
+            </sw-text-field>
+            <sw-text-editor
+                    v-model:value="blog.description"
+                    :label="$tc('blog.fields.description')"
+            >
+            </sw-text-editor>
+            <sw-switch-field
+                    v-model:value="blog.active"
+                    :label="$tc('blog.fields.active')"
+            >
+            </sw-switch-field>
+            <sw-text-field
+                    v-model:value="blog.author"
+                    :label="$tc('blog.fields.author')"
+            >
+            </sw-text-field>
+            <sw-datepicker
+                    v-model:value="blog.releaseDate"
+                    :label="$tc('blog.fields.releaseDate')"
+            >
+            </sw-datepicker>
+            <sw-entity-multi-select
+                    v-model:entityCollection="blog.categories"
+{#                    v-model:entityCollection="blog.blogCategories"#}
+                    entity="blog_category"
+                    :label="$tc('blog.fields.categories')"
+{#                    :label="$tc('blog.fields.blogCategories')"#}
+            >
+            </sw-entity-multi-select>
+
+            <sw-entity-multi-select
+                    v-model:entityCollection="blog.products"
+                    entity="product"
+                    :label="$tc('blog.fields.products')"
+            >
+            </sw-entity-multi-select>
+
+        </sw-card>
+    </template>
+</sw-page>
