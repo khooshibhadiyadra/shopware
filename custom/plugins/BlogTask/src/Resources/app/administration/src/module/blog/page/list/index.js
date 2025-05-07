@@ -36,7 +36,6 @@ Shopware.Component.register('blog-list', {
                 { property: 'releaseDate', label: 'blog.fields.releaseDate', allowResize: true },
                 { property: 'active', label: 'blog.fields.active', allowResize: true },
                // { property: 'categories', label: 'blog.fields.categories', allowResize: true },
-               // {property: 'blogCategories',label:'blog.fields.blogCategories',allowResize: true},
                 {property: 'blogCategories',label:'blog.fields.categories',allowResize: true},
                 { property: 'products', label: 'blog.fields.products', allowResize: true }
             ];
@@ -48,8 +47,8 @@ Shopware.Component.register('blog-list', {
             // console.log(criteria);
             criteria.setTerm(this.term);
             criteria.addSorting(Criteria.sort(this.sortBy, this.sortDirection, this.naturalSorting));
-            // criteria.addAssociation('categories');
-            criteria.addAssociation('blogCategories');
+            criteria.addAssociation('categories');
+            // criteria.addAssociation('blogCategories');
             criteria.addAssociation('products');
             return criteria;
         }
@@ -87,7 +86,9 @@ Shopware.Component.register('blog-list', {
                 const result = await this.blogRepository.search(criteria, Shopware.Context.api);
                 this.blogs = result;
                 this.total = result.total;
-            } catch (error) {
+            console.log(this.blogs);
+            }
+            catch (error) {
                 console.error('Failed to fetch blog', error);
             } finally {
                 this.isLoading = false;

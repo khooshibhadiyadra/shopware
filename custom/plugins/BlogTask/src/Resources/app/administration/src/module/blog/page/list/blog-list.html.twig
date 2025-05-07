@@ -30,17 +30,16 @@
         >
             <template #column-categories="{ item }">
         <span>
-{#            {{ item.categories.map(category => category.name).join(', ') }}#}
-            {{ item.blogCategories.map(category=>category.name).join(', ') }}
+{#            {{ item.blogCategories.map(category=>category.name).join(', ') }}#}
+{#            {{ item.categories.map(category=>blogCategory.name).join(', ') }}#}
+            {{ item.categories.map(category=>category.name).join(', ') }}
         </span>
             </template>
-
             <template #column-products="{ item }">
         <span>
             {{ item.products.map(product => product.name).join(', ') }}
         </span>
             </template>
-
             <template #column-description="{ item }">
                 <span v-html="item.description"></span>
             </template>
