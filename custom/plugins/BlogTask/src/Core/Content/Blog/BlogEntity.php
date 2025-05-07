@@ -182,7 +182,7 @@ class BlogEntity extends Entity
         $this->updatedAt = $updatedAt;
     }
 
-    public function getTranslated(): ?array
+    public function getTranslated(): array
     {
         return $this->translated;
     }

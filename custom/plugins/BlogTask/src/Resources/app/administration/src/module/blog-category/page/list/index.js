@@ -88,6 +88,9 @@ Component.register('blog-category-list', {
             this.isLoading = true;
 
             try {
+                if (!Shopware.State.getters['context/isSystemDefaultLanguage']) {
+                    Shopware.State.commit('context/resetLanguageToDefault');
+                }
                 // const criteria=new Criteria();
                 const criteria = await this.addQueryScores(this.term, this.blogCategoryCriteria);
                 if (!this.entitySearchable) {
@@ -96,9 +99,11 @@ Component.register('blog-category-list', {
                 }
                 const result = await this.blogCategoryRepository.search(criteria);
                 this.blogCategories = result;
-                console.log(result);
+                // console.log(result);
                 this.total = result.total;
-            } catch (error) {
+                this.initState();
+            }
+            catch (error) {
                 console.error('Failed to fetch categories:', error);
             } finally {
                 this.isLoading = false;

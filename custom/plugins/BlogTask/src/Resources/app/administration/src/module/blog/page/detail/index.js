@@ -41,6 +41,9 @@ Shopware.Component.register('blog-detail', {
         async loadBlog() {
             this.isLoading = true;
             try {
+                if (!Shopware.State.getters['context/isSystemDefaultLanguage']) {
+                    Shopware.State.commit('context/resetLanguageToDefault');
+                }
                 if (this.isNew) {
                     this.blog = this.blogRepository.create(Shopware.Context.api);
                 } else {
@@ -61,14 +64,17 @@ Shopware.Component.register('blog-detail', {
         async onSave() {
             this.isLoading = true;
             try {
+                if (!Shopware.State.getters['context/isSystemDefaultLanguage']) {
+                    Shopware.State.commit('context/resetLanguageToDefault');
+                }
                 await this.blogRepository.save(this.blog, Shopware.Context.api);
                 this.isSaveSuccessful = true;
 
                 if (this.isNew) {
-                    this.$router.push({ name: 'blog.module.detail', params: { id: this.blog.id } });
+                    this.$router.push({ name: 'blog.module.index', params: { id: this.blog.id } });
                 } else {
                     await this.loadBlog();
-                    this.$router.push({ name: 'blog.module.detail' });
+                    this.$router.push({ name: 'blog.module.index' });
                 }
             } catch (e) {
                 this.createNotificationError({

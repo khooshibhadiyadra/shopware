@@ -40,6 +40,9 @@ Component.register('blog-category-detail', {
             this.isLoading = true;
 
             try {
+                // if (!Shopware.State.getters['context/isSystemDefaultLanguage']) {
+                //     Shopware.State.commit('context/resetLanguageToDefault');
+                // }
                 if (this.isNew) {
                     this.blogCategory = this.blogCategoryRepository.create(Shopware.Context.api);
                 } else {
@@ -53,9 +56,10 @@ Component.register('blog-category-detail', {
             }
         },
 
+
         async onSave() {
             this.isLoading = true;
-            // console.log(this.blogCategory);
+            console.log(this.blogCategory);
 
             try {
                 await this.blogCategoryRepository.save(this.blogCategory, Shopware.Context.api);

@@ -35,20 +35,16 @@ Shopware.Component.register('blog-list', {
                 { property: 'author', label: 'blog.fields.author', allowResize: true },
                 { property: 'releaseDate', label: 'blog.fields.releaseDate', allowResize: true },
                 { property: 'active', label: 'blog.fields.active', allowResize: true },
-               // { property: 'categories', label: 'blog.fields.categories', allowResize: true },
                 {property: 'blogCategories',label:'blog.fields.categories',allowResize: true},
                 { property: 'products', label: 'blog.fields.products', allowResize: true }
             ];
         },
 
         blogCriteria() {
-            // const criteria=new Criteria();
             const criteria = new Criteria(this.page, this.limit);
-            // console.log(criteria);
             criteria.setTerm(this.term);
             criteria.addSorting(Criteria.sort(this.sortBy, this.sortDirection, this.naturalSorting));
-            criteria.addAssociation('categories');
-            // criteria.addAssociation('blogCategories');
+            criteria.addAssociation('blogCategories');
             criteria.addAssociation('products');
             return criteria;
         }
@@ -75,9 +71,10 @@ Shopware.Component.register('blog-list', {
             this.isLoading = true;
 
             try {
-                // const criteria=new Criteria();
+                // if (!Shopware.State.getters['context/isSystemDefaultLanguage']) {
+                //     Shopware.State.commit('context/resetLanguageToDefault');
+                // }
                 const criteria = await this.addQueryScores(this.term, this.blogCriteria);
-                // console.log(criteria);
 
                 if (!this.entitySearchable) {
                     this.isLoading = false;
