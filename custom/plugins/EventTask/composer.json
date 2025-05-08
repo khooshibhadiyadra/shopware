@@ -1,0 +1,36 @@
+{
+    "name": "event-task/event-task",
+    "description": "event-task/event-task",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "iCreative Technologies"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "EventTask\\EventTask",
+        "label": {
+            "de-DE": "Event plugin",
+            "en-GB": "Event plugin"
+        },
+        "description": {
+            "de-DE": "Eventbeheerder",
+            "en-GB": "Event Manager"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "EventTask\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EventTask\\Tests\\": "tests/"
+        }
+    }
+}
