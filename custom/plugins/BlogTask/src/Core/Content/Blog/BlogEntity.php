@@ -4,9 +4,9 @@ namespace BlogTask\Core\Content\Blog;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use BlogTask\Core\Content\Blog\Aggregate\BlogTranslationCollection;
 use Shopware\Core\Content\Product\ProductCollection;
 use BlogTask\Core\Content\BlogCategory\BlogCategoryCollection;
+use BlogTask\Core\Content\Blog\Aggregate\BlogTranslationCollection;
 
 class BlogEntity extends Entity
 {
@@ -43,11 +43,6 @@ class BlogEntity extends Entity
     protected $author;
 
     /**
-     * @var BlogTranslationCollection
-     */
-    protected $translations;
-
-    /**
      * @var ProductCollection|null
      */
     protected $products;
@@ -56,6 +51,11 @@ class BlogEntity extends Entity
      * @var BlogCategoryCollection|null
      */
     protected $blogCategories;
+
+    /**
+     * @var BlogTranslationCollection
+     */
+    protected $translations;
 
     /**
      * @var \DateTimeInterface
@@ -132,16 +132,6 @@ class BlogEntity extends Entity
         $this->author = $author;
     }
 
-    public function getTranslations(): BlogTranslationCollection
-    {
-        return $this->translations;
-    }
-
-    public function setTranslations(BlogTranslationCollection $translations): void
-    {
-        $this->translations = $translations;
-    }
-
     public function getProducts(): ?ProductCollection
     {
         return $this->products;
@@ -160,6 +150,16 @@ class BlogEntity extends Entity
     public function setBlogCategories(?BlogCategoryCollection $blogCategories): void
     {
         $this->blogCategories = $blogCategories;
+    }
+
+    public function getTranslations(): BlogTranslationCollection
+    {
+        return $this->translations;
+    }
+
+    public function setTranslations(BlogTranslationCollection $translations): void
+    {
+        $this->translations = $translations;
     }
 
     public function getCreatedAt(): \DateTimeInterface

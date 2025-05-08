@@ -1,2 +1,2 @@
-import './module/blog';
-import './module/blog-category';
+import './module/sw-blog';
+import './module/sw-blog-category';

@@ -18,13 +18,12 @@ class BlogTask extends Plugin
         }
         $connection = $this->container->get(Connection::class);
         try {
-            $connection->executeStatement('DROP TABLE IF EXISTS `blog`');
-            $connection->executeStatement('DROP TABLE IF EXISTS `blog_category`');
-            $connection->executeStatement('DROP TABLE IF EXISTS `blog_category_blog`');
-            $connection->executeStatement('DROP TABLE IF EXISTS `blog_category_translation`');
-            $connection->executeStatement('DROP TABLE IF EXISTS `blog_product`');
             $connection->executeStatement('DROP TABLE IF EXISTS `blog_translation`');
-
+            $connection->executeStatement('DROP TABLE IF EXISTS `blog_product`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `blog_category_translation`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `blog_category_blog`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `blog_category`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `blog`');
         } catch (Exception $e) {
         }
     }

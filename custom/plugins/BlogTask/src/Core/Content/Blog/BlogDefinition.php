@@ -42,7 +42,7 @@ class BlogDefinition extends EntityDefinition
             (new DateField('release_date', 'releaseDate'))->addFlags(new Required()),
             (new BoolField('active', 'active'))->addFlags(new Required()),
             new TranslatedField('author'),
-            new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'),
+//            new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'),
             new ManyToManyAssociationField(
                 'products',
                 ProductDefinition::class,
