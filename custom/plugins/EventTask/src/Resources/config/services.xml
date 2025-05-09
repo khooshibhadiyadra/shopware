@@ -5,6 +5,34 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="EventTask\Core\Content\Event\EventDefinition">
+            <tag name="shopware.entity.definition" entity="event" />
+        </service>
+        <service id="EventTask\Core\Content\EventCategory\EventCategoryDefinition">
+            <tag name="shopware.entity.definition" entity="event_category" />
+        </service>
+        <service id="EventTask\Core\Content\EventCategoryMapping\EventCategoryMappingDefinition">
+            <tag name="shopware.entity.definition" entity="event_category_event" />
+        </service>
+        <service id="EventTask\Core\Content\EventCustomerMapping\EventCustomerMappingDefinition">
+            <tag name="shopware.entity.definition" entity="event_customer" />
+        </service>
+        <service id="EventTask\Core\Content\Extension\CategoryDefinitionExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="EventTask\Core\Content\Extension\CustomerDefinitionExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="EventTask\Core\Content\Extension\LanguageExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="EventTask\Core\Content\Event\Aggregate\EventTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="event_translation" />
+        </service>
+        <service id="EventTask\Core\Content\EventCategory\Aggregate\EventCategoryTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="event_category_translation" />
+        </service>
+
 
     </services>
 </container>

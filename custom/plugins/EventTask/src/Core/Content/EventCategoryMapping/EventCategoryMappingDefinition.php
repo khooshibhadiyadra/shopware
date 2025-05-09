@@ -13,7 +13,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 
 class EventCategoryMappingDefinition extends MappingEntityDefinition
-
 {
     public const ENTITY_NAME = 'event_category_event';
 
@@ -23,13 +22,21 @@ class EventCategoryMappingDefinition extends MappingEntityDefinition
     }
     protected function defineFields(): FieldCollection
     {
+//        return new FieldCollection([
+//            (new FkField('event_id', 'eventId', EventDefinition::class))->addFlags(new PrimaryKey(), new Required()),
+//            (new ReferenceVersionField(EventDefinition::class))->addFlags(new PrimaryKey(), new Required()),
+//            (new FkField('category_id', 'categoryId', CategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
+//            (new ReferenceVersionField(CategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
+//            new ManyToOneAssociationField('event', 'event_id', EventDefinition::class, 'id'),
+//            new ManyToOneAssociationField('category', 'category_id', CategoryDefinition::class, 'id')
+//        ]);
         return new FieldCollection([
             (new FkField('event_category_id', 'eventCategoryId', EventCategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new FkField('event_id', 'eventId', EventDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(EventCategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(EventDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             new ManyToOneAssociationField('event', 'event_id', EventDefinition::class, 'id'),
-            new ManyToOneAssociationField('eventCategory', 'event_category_id', EventCategoryDefinition::class, 'id')
+            new ManyToOneAssociationField('eventCategory', 'event_category_id', EventCategoryDefinition::class, 'id'),
         ]);
     }
 }

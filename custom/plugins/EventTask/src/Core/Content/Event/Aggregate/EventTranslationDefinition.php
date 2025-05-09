@@ -4,10 +4,10 @@ namespace EventTask\Core\Content\Event\Aggregate;
 
 use EventTask\Core\Content\Event\EventDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 
 class EventTranslationDefinition extends EntityTranslationDefinition
 {
@@ -17,13 +17,13 @@ class EventTranslationDefinition extends EntityTranslationDefinition
     {
         return self::ENTITY_NAME;
     }
-//    public function getEntityClass(): string{
-//        return EventTranslationEntity::class;
-//    }
-//    public function getCollectionClass(): string
-//    {
-//        return EventTranslationCollection::class;
-//    }
+    public function getEntityClass(): string{
+        return EventTranslationEntity::class;
+    }
+    public function getCollectionClass(): string
+    {
+        return EventTranslationCollection::class;
+    }
     protected function getParentDefinitionClass(): string
     {
         return EventDefinition::class;

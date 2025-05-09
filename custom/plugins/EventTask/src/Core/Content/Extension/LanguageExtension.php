@@ -2,7 +2,6 @@
 
 namespace EventTask\Core\Content\Extension;
 
-
 use EventTask\Core\Content\Event\Aggregate\EventTranslationDefinition;
 use EventTask\Core\Content\EventCategory\Aggregate\EventCategoryTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;

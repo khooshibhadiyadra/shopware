@@ -22,13 +22,13 @@ class EventCategoryDefinition extends EntityDefinition
     {
         return self::ENTITY_NAME;
     }
-//    public function getEntityClass(): string{
-//        return EventCategoryEntity::class;
-//    }
-//    public function getCollectionClass(): string
-//    {
-//        return EventCategoryCollection::class;
-//    }
+    public function getEntityClass(): string{
+        return EventCategoryEntity::class;
+    }
+    public function getCollectionClass(): string
+    {
+        return EventCategoryCollection::class;
+    }
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([

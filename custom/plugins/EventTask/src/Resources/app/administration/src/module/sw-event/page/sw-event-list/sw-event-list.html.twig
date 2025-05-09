@@ -1,0 +1,56 @@
+{% block sw_event_list %}
+    <sw-page class="sw-event-list">
+
+        {% block sw_event_list_search_bar %}
+            <template #search-bar>
+                <sw-search-bar initial-search-type="event" :initial-search="term" @search="onSearch"/>
+            </template>
+        {% endblock %}
+
+        {% block sw_event_list_smart_bar_header %}
+            <template #smart-bar-header>
+                {% block sw_event_list_smart_bar_header_title %}
+                    <h2>
+                        {% block sw_event_list_smart_bar_header_title_text %}
+                            {{ $tc('title') }}
+                        {% endblock %}
+
+                        {% block sw_event_list_smart_bar_header_amount %}
+                            <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+								({{ total }})
+							</span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+        {% block sw_event_list_smart_bar_actions %}
+            <template #smart-bar-actions>
+                <sw-button variant="primary" :router-link="{ name: 'sw.event.create' }">
+                    <p>
+                        {{$tc('Create new Event')}}
+                    </p>
+                </sw-button>
+            </template>
+        {% endblock %}
+        {% block sw_event_list_language_switch %}
+            <template #language-switch>
+                <sw-language-switch @on-change="onChangeLanguage"/>
+            </template>
+        {% endblock %}
+        <template #content>
+            {% block sw_event_list_content %}
+                <sw-entity-listing
+                        :items="event"
+                        :repository="repository"
+                        :showselection="false"
+                        :columns="columns"
+                        :is-loading="isLoading"
+                        :allow-edit="true"
+                        :allow-inline-edit="true"
+                        :allow-delete="true">
+                </sw-entity-listing>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

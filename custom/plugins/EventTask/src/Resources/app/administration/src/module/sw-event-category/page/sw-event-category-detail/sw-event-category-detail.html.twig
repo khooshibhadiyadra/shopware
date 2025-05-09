@@ -1,0 +1,42 @@
+{% block sw_event_category_detail %}
+    <sw-page class="sw-event-detail">
+        {% block sw_product_list_language_switch %}
+            <template #language-switch>
+                <sw-language-switch :disabled="eventCategoryId == null || undefined" :save-changes-function="saveOnLanguageChange" :abort-change-function="abortOnLanguageChange" @on-change="onChangeLanguage"/>
+            </template>
+        {% endblock %}
+        <template #smart-bar-actions>
+            <sw-button :router-link="{name: 'sw.event.category.index'}">
+                {{$tc('cancel')}}
+            </sw-button>
+{#            <sw-button-process :isloading="isLoading" :process-success="process-Success"#}
+{#                               variant="primary" @process-finish="saveFinish" @click="onClickSave">#}
+{#                {{$tc('save')}}#}
+{#            </sw-button-process>#}
+            <sw-button-process
+                :isLoading="isLoading"
+                :process-success="process"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave"
+            >
+                {{ $tc('save') }}
+            </sw-button-process>
+        </template>
+        <template #content>
+            <sw-card-view>
+                <sw-card v-if="eventCategory">
+                    <sw-text-field
+                        v-model:value="eventCategory.name"
+                        :placeholder="$tc('sw-event-category.detail.placeholderName')"
+                        :label="$tc('sw-event-category.detail.labelName')"
+                        name="name"
+                        validation="required"
+                        required
+                    >
+                    </sw-text-field>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

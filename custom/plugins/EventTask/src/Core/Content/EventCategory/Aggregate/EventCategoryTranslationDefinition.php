@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 namespace EventTask\Core\Content\EventCategory\Aggregate;
+
 use EventTask\Core\Content\EventCategory\EventCategoryDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
@@ -15,13 +16,13 @@ class EventCategoryTranslationDefinition extends EntityTranslationDefinition
     {
         return self::ENTITY_NAME;
     }
-//    public function getEntityClass(): string{
-//        return EventCategoryTranslationEntity::class;
-//    }
-//    public function getCollectionClass(): string
-//    {
-//        return EventCategoryTranslationCollection::class;
-//    }
+    public function getEntityClass(): string{
+        return EventCategoryTranslationEntity::class;
+    }
+    public function getCollectionClass(): string
+    {
+        return EventCategoryTranslationCollection::class;
+    }
     protected function getParentDefinitionClass(): string
     {
         return EventCategoryDefinition::class;

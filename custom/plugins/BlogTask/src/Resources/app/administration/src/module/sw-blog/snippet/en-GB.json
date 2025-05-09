@@ -18,7 +18,6 @@
       "name": "Name",
       "description": "Description",
       "active": "Active",
-      "author": "Author",
       "releaseDate": "Release Date",
       "categories": "Blog Categories",
       "products": "Products"

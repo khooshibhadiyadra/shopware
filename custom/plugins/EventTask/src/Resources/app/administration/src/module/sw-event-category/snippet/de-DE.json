@@ -1,0 +1,26 @@
+{
+  "sw-event-category": {
+    "general": {
+      "mainMenuItemList": "Veranstaltungskategorie",
+      "mainMenuItemGeneral": "Veranstaltungskategorie",
+      "somethingWentWrong": "etwas ist schief gelaufen",
+      "cancel": "Stornieren",
+      "save": "Speichern"
+    },
+    "list": {
+      "buttonAddEvent": "Ereigniskategorie hinzufügen",
+      "columnName": "Name",
+      "columnLink": "Webseite"
+    },
+    "detail": {
+      "labelName": "Name",
+      "labelDescription": "Beschreibung",
+      "labelLink": "Webseite",
+      "placeholderName": "Geben Sie den Namen der Ereigniskategorie ein ...",
+      "titleSaveSuccess": "Erfolg",
+      "messageSaveSuccess": "Event-Kategorie „{name}“ wurde gespeichert.",
+      "errorNameRequired" : "Name ist erforderlich"
+
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "event": {
+    "module": {
+      "name": "Event",
+      "description": "Event verwalten",
+      "label": "Event"
+    },
+    "general": {
+      "mainMenuItemGeneral": "Event",
+      "descriptionTextModule": "Allgemein",
+      "createButton": "Neuen Event erstellen",
+      "cancelButton": "Abbrechen",
+      "saveButton": "Speichern Sie",
+      "createTitle": "Event erstellen",
+      "editTitle": "Event bearbeiten"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Beschreibung",
+      "active": "Aktiv",
+      "eventDate": "Ereignisdatum",
+      "categories": "Event-Kategorien",
+      "organizedBy": "organisiert von"
+    },
+    "list": {
+      "title": "Events"
+    }
+  }
+}

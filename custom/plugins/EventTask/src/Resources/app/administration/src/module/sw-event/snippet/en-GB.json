@@ -1,0 +1,29 @@
+{
+  "event": {
+    "module": {
+      "name": "Event",
+      "description": "Manage event",
+      "label": "Event"
+    },
+    "general": {
+      "mainMenuItemGeneral": "Event",
+      "descriptionTextModule": "Generally",
+      "createButton": "Create new event",
+      "cancelButton": "Cancel",
+      "saveButton": "Save",
+      "createTitle": "Create event",
+      "editTitle": "Edit event"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "active": "Active",
+      "eventDate": "Event date",
+      "categories": "Event categories",
+      "organizedBy": "organized by"
+    },
+    "list": {
+      "title": "Events"
+    }
+  }
+}
