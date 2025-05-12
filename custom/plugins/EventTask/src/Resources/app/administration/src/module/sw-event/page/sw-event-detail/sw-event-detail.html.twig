@@ -61,13 +61,26 @@
                             v-model:entityCollection="event.eventCategories"
                     >
                     </sw-entity-multi-select>
-                    <sw-entity-multi-select
-                            :label="$tc('Organized By')"
-                            :placeholder="$tc('Organized By')"
-                            entity-name="customer"
-                            v-model:entityCollection="event.customers"
+{#                    <sw-entity-multi-select#}
+{#                            :label="$tc('Organized By')"#}
+{#                            :placeholder="$tc('Organized By')"#}
+{#                            entity-name="customer"#}
+{#                            v-model:entityCollection="event.Customer"#}
+{#                    >#}
+
+                    <sw-entity-single-select
+                        id="organizedBy"
+                        :label="$tc('Organized By')"
+                        :value="organizedBy"
+                        entity-name="customer"
+                        :placeholder="$tc('Organized By')"
+                        show-clearable-button
+                        @update:value="createdComponent"
+{#                        show-clearable-button#}
+{#                        allow-entity-creation#}
+{#                        :entity-creation-label="$tc('sw-event.detail.labelOrganizedBy')"#}
                     >
-                    </sw-entity-multi-select>
+                    </sw-entity-single-select>
                 </sw-card>
             </sw-card-view>
         </template>

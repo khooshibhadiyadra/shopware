@@ -6,18 +6,18 @@ use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 
 /**
  * @package core
- * @method void                add(ArrayEntity $entity)
- * @method void                set(string $key, ArrayEntity $entity)
- * @method ArrayEntity[]    getIterator()
- * @method ArrayEntity[]    getElements()
- * @method ArrayEntity|null get(string $key)
- * @method ArrayEntity|null first()
- * @method ArrayEntity|null last()
+ * @method void                add(EventEntity $entity)
+ * @method void                set(string $key, EventEntity $entity)
+ * @method EventEntity[]    getIterator()
+ * @method EventEntity[]    getElements()
+ * @method EventEntity|null get(string $key)
+ * @method EventEntity|null first()
+ * @method EventEntity|null last()
  */
 class EventCollection extends EntityCollection
 {
     protected function getExpectedClass(): string
     {
-        return ArrayEntity::class;
+        return EventEntity::class;
     }
 }

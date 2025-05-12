@@ -16,10 +16,10 @@ export default {
         return {
             event: null,
             eventCategory: null,
-            product: null,
+            customer: null,
             eventRepository: null,
             eventCategoryRepository: null,
-            productRepository: null,
+            customerRepository: null,
             isLoading: false,
             processSuccess: false,
             eventCategoryOptions: null,
@@ -50,9 +50,9 @@ export default {
             this.eventRepository = this.repositoryFactory.create("event");
             this.eventCategoryRepository =
                 this.repositoryFactory.create("event_category");
-            this.productRepository = this.repositoryFactory.create("product");
+            this.customerRepository = this.repositoryFactory.create("customer");
             this.getEventCategory();
-            this.getProduct();
+            this.getCustomer();
 
             if (this.eventId) {
                 this.getEvent();
@@ -65,7 +65,7 @@ export default {
         getEvent() {
             const criteria = new Criteria();
             criteria.addAssociation("eventCategories");
-            criteria.addAssociation("products");
+            criteria.addAssociation("organizedBy");
 
             this.eventRepository
                 .get(this.$route.params.id, Shopware.Context.api, criteria)
@@ -79,12 +79,14 @@ export default {
                 .then((result) => {
                     this.eventCategoryOptions = result;
                 });
+
         },
-        getProduct() {
-            this.productRepository
+        getCustomer() {
+            this.customerRepository
                 .search(new Criteria(), Shopware.Context.api)
                 .then((result) => {
-                    this.product = result;
+                    this.customer = result;
+                    console.log(this.customer);
                 });
         },
         abortOnLanguageChange() {
@@ -100,7 +102,7 @@ export default {
             Shopware.State.commit("context/setApiLanguageId", languageId);
             this.getEvent();
             this.getEventCategory();
-            this.getProduct();
+            this.getCustomer();
         },
         onClickSave() {
             this.isLoading = true;

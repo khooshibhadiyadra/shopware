@@ -14,13 +14,10 @@
         <service id="EventTask\Core\Content\EventCategoryMapping\EventCategoryMappingDefinition">
             <tag name="shopware.entity.definition" entity="event_category_event" />
         </service>
-        <service id="EventTask\Core\Content\EventCustomerMapping\EventCustomerMappingDefinition">
-            <tag name="shopware.entity.definition" entity="event_customer" />
-        </service>
-        <service id="EventTask\Core\Content\Extension\CategoryDefinitionExtension">
+        <service id="EventTask\Core\Content\Extension\CategoryExtension">
             <tag name="shopware.entity.extension" />
         </service>
-        <service id="EventTask\Core\Content\Extension\CustomerDefinitionExtension">
+        <service id="EventTask\Core\Content\Extension\CustomerExtension">
             <tag name="shopware.entity.extension" />
         </service>
         <service id="EventTask\Core\Content\Extension\LanguageExtension">
@@ -32,7 +29,5 @@
         <service id="EventTask\Core\Content\EventCategory\Aggregate\EventCategoryTranslationDefinition">
             <tag name="shopware.entity.definition" entity="event_category_translation" />
         </service>
-
-
     </services>
 </container>

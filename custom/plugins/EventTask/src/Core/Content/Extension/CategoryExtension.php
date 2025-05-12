@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
 namespace EventTask\Core\Content\Extension;
-
-use EventTask\Core\Content\Event\EventDefinition;
-use EventTask\Core\Content\EventCustomerMapping\EventCustomerMappingDefinition;
-use Shopware\Core\Checkout\Customer\CustomerDefinition;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-class CustomerDefinitionExtension extends EntityExtension
+use EventTask\Core\Content\Event\EventDefinition;
+use EventTask\Core\Content\EventCategoryMapping\EventCategoryMappingDefinition;
+use Shopware\Core\Content\Category\CategoryDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
+
+class CategoryExtension extends EntityExtension
 {
     public function extendFields(FieldCollection $collection): void
     {
@@ -17,8 +17,8 @@ class CustomerDefinitionExtension extends EntityExtension
             new ManyToManyAssociationField(
                 'events',
                 EventDefinition::class,
-                EventCustomerMappingDefinition::class,
-                'customer_id',
+                EventCategoryMappingDefinition::class,
+                'event_category_id',
                 'event_id'
             )
         );
@@ -26,6 +26,6 @@ class CustomerDefinitionExtension extends EntityExtension
 
     public function getDefinitionClass(): string
     {
-        return CustomerDefinition::class;
+        return CategoryDefinition::class;
     }
 }

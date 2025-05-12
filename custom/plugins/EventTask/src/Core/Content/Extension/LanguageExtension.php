@@ -2,12 +2,14 @@
 
 namespace EventTask\Core\Content\Extension;
 
+
 use EventTask\Core\Content\Event\Aggregate\EventTranslationDefinition;
 use EventTask\Core\Content\EventCategory\Aggregate\EventCategoryTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\System\Language\LanguageDefinition;
+
 
 class LanguageExtension extends EntityExtension
 {

@@ -4,8 +4,7 @@ namespace EventTask\Core\Content\Event;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Checkout\Customer\CustomerCollection;
-use Shopware\Core\Content\Category\CategoryCollection;
+use Shopware\Core\Checkout\Customer\CustomerEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 
 class EventEntity extends Entity
@@ -30,7 +29,7 @@ class EventEntity extends Entity
     /**
      * @var bool
      */
-    protected $isActive;
+    protected $active;
 
     /**
      * @var \DateTimeInterface
@@ -38,12 +37,17 @@ class EventEntity extends Entity
     protected $eventDate;
 
     /**
-     * @var CustomerCollection|null
+     * @var string|null
      */
-    protected $organizedBys;
+    protected $organizedById;
 
     /**
-     * @var CategoryCollection|null
+     * @var CustomerEntity|null
+     */
+    protected $organizedBy;
+
+    /**
+     * @var EntityCollection|null
      */
     protected $eventCategories;
 
@@ -97,14 +101,14 @@ class EventEntity extends Entity
         $this->description = $description;
     }
 
-    public function getIsActive(): bool
+    public function getActive(): bool
     {
-        return $this->isActive;
+        return $this->active;
     }
 
-    public function setIsActive(bool $isActive): void
+    public function setActive(bool $active): void
     {
-        $this->isActive = $isActive;
+        $this->active = $active;
     }
 
     public function getEventDate(): \DateTimeInterface
@@ -117,22 +121,32 @@ class EventEntity extends Entity
         $this->eventDate = $eventDate;
     }
 
-    public function getOrganizedBys(): ?CustomerCollection
+    public function getOrganizedById(): ?string
     {
-        return $this->organizedBys;
+        return $this->organizedById;
     }
 
-    public function setOrganizedBys(?CustomerCollection $organizedBys): void
+    public function setOrganizedById(?string $organizedById): void
     {
-        $this->organizedBys = $organizedBys;
+        $this->organizedById = $organizedById;
     }
 
-    public function getEventCategories(): ?CategoryCollection
+    public function getOrganizedBy(): ?CustomerEntity
+    {
+        return $this->organizedBy;
+    }
+
+    public function setOrganizedBy(?CustomerEntity $organizedBy): void
+    {
+        $this->organizedBy = $organizedBy;
+    }
+
+    public function getEventCategories(): ?EntityCollection
     {
         return $this->eventCategories;
     }
 
-    public function setEventCategories(?CategoryCollection $eventCategories): void
+    public function setEventCategories(?EntityCollection $eventCategories): void
     {
         $this->eventCategories = $eventCategories;
     }

@@ -2,8 +2,10 @@
 
 namespace EventTask\Core\Content\EventCategoryMapping;
 
+
 use EventTask\Core\Content\Event\EventDefinition;
 use EventTask\Core\Content\EventCategory\EventCategoryDefinition;
+use Shopware\Core\Content\Category\CategoryDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
@@ -22,14 +24,7 @@ class EventCategoryMappingDefinition extends MappingEntityDefinition
     }
     protected function defineFields(): FieldCollection
     {
-//        return new FieldCollection([
-//            (new FkField('event_id', 'eventId', EventDefinition::class))->addFlags(new PrimaryKey(), new Required()),
-//            (new ReferenceVersionField(EventDefinition::class))->addFlags(new PrimaryKey(), new Required()),
-//            (new FkField('category_id', 'categoryId', CategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
-//            (new ReferenceVersionField(CategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
-//            new ManyToOneAssociationField('event', 'event_id', EventDefinition::class, 'id'),
-//            new ManyToOneAssociationField('category', 'category_id', CategoryDefinition::class, 'id')
-//        ]);
+
         return new FieldCollection([
             (new FkField('event_category_id', 'eventCategoryId', EventCategoryDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new FkField('event_id', 'eventId', EventDefinition::class))->addFlags(new PrimaryKey(), new Required()),
@@ -38,5 +33,6 @@ class EventCategoryMappingDefinition extends MappingEntityDefinition
             new ManyToOneAssociationField('event', 'event_id', EventDefinition::class, 'id'),
             new ManyToOneAssociationField('eventCategory', 'event_category_id', EventCategoryDefinition::class, 'id'),
         ]);
+
     }
 }

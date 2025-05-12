@@ -7,9 +7,9 @@ Shopware.Component.register("sw-event-list", () =>
 Shopware.Component.register("sw-event-detail", () =>
     import("./page/sw-event-detail")
 );
-
 Module.register("sw-event", {
     title: "Event",
+    name: "Event",
     description: "Event",
     color: "#176aaf",
     snippets: {

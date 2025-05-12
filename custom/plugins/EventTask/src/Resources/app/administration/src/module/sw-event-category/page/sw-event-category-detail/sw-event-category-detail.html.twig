@@ -9,16 +9,16 @@
             <sw-button :router-link="{name: 'sw.event.category.index'}">
                 {{$tc('cancel')}}
             </sw-button>
-{#            <sw-button-process :isloading="isLoading" :process-success="process-Success"#}
-{#                               variant="primary" @process-finish="saveFinish" @click="onClickSave">#}
-{#                {{$tc('save')}}#}
-{#            </sw-button-process>#}
+            {#            <sw-button-process :isloading="isLoading" :process-success="process-Success"#}
+            {#                               variant="primary" @process-finish="saveFinish" @click="onClickSave">#}
+            {#                {{$tc('save')}}#}
+            {#            </sw-button-process>#}
             <sw-button-process
-                :isLoading="isLoading"
-                :process-success="process"
-                variant="primary"
-                @process-finish="saveFinish"
-                @click="onClickSave"
+                    :isLoading="isLoading"
+                    :process-success="process"
+                    variant="primary"
+                    @process-finish="saveFinish"
+                    @click="onClickSave"
             >
                 {{ $tc('save') }}
             </sw-button-process>
@@ -27,12 +27,12 @@
             <sw-card-view>
                 <sw-card v-if="eventCategory">
                     <sw-text-field
-                        v-model:value="eventCategory.name"
-                        :placeholder="$tc('sw-event-category.detail.placeholderName')"
-                        :label="$tc('sw-event-category.detail.labelName')"
-                        name="name"
-                        validation="required"
-                        required
+                            v-model:value="eventCategory.name"
+                            :placeholder="$tc('sw-event-category.detail.placeholderName')"
+                            :label="$tc('sw-event-category.detail.labelName')"
+                            name="name"
+                            validation="required"
+                            required
                     >
                     </sw-text-field>
                 </sw-card>

@@ -17,7 +17,7 @@ export default {
     metaInfo() {
         return {
             title: this.$createTitle(),
-        }
+        };
     },
     computed: {
         columns() {
