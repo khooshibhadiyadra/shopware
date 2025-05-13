@@ -1,7 +1,7 @@
 import template from "./sw-event-detail.html.twig";
 
-const { Mixin } = Shopware;
-const { Criteria } = Shopware.Data;
+const {Mixin} = Shopware;
+const {Criteria} = Shopware.Data;
 
 export default {
     template,
@@ -31,6 +31,12 @@ export default {
             required: false,
             default: null,
         },
+    },
+    computed: {
+        customerCriteria() {
+            const criteria = new Criteria();
+            return criteria;
+        }
     },
     watch: {
         eventId() {
@@ -78,15 +84,15 @@ export default {
                 .search(new Criteria(), Shopware.Context.api)
                 .then((result) => {
                     this.eventCategoryOptions = result;
+                    // console.log(result);
                 });
-
         },
         getCustomer() {
             this.customerRepository
                 .search(new Criteria(), Shopware.Context.api)
                 .then((result) => {
-                    this.customer = result;
-                    console.log(this.customer);
+                    // this.customer = result;
+                    // console.log(result);
                 });
         },
         abortOnLanguageChange() {
@@ -120,11 +126,12 @@ export default {
                     if (this.eventId === null) {
                         this.$router.push({
                             name: "sw.event.detail",
-                            params: { id: this.event.id },
+                            params: {id: this.event.id},
                         });
                         return;
                     }
                     this.getEvent();
+                    // this.getCustomer();
                 })
                 .catch((exception) => {
                     this.isLoading = false;

@@ -2,12 +2,11 @@
 
 namespace EventTask;
 
+
 use Shopware\Core\Framework\Plugin;
-use Shopware\Core\Framework\Plugin\Context\ActivateContext;
-use Shopware\Core\Framework\Plugin\Context\DeactivateContext;
-use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
-use Shopware\Core\Framework\Plugin\Context\UpdateContext;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception;
 
 class EventTask extends Plugin
 {
@@ -18,7 +17,15 @@ class EventTask extends Plugin
         if ($uninstallContext->keepUserData()) {
             return;
         }
+        $connection = $this->container->get(Connection::class);
+        try {
+            $connection->executeStatement('DROP TABLE IF EXISTS `event_translation`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `event_category_translation`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `event_category_event`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `event_category`');
+            $connection->executeStatement('DROP TABLE IF EXISTS `event`');
+        } catch (Exception $e) {
+        }
 
-        // Remove or deactivate the data created by the plugin
     }
 }

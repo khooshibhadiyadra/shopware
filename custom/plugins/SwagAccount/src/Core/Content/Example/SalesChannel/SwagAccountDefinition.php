@@ -42,14 +42,16 @@ class SwagAccountDefinition extends EntityDefinition
             new TranslatedField('city'),
             new BoolField('active','active'),
             new FkField('country_id', 'countryId', CountryDefinition::class),
+            new ManyToOneAssociationField('country','country_id',CountryDefinition::class),
             new FkField('state_id','stateId',CountryStateDefinition::class),
             new FkField('media_id','mediaId',MediaDefinition::class,'id'),
             new FkField('product_id','productId',ProductDefinition::class),
+            new ManyToOneAssociationField('product','product_id',ProductDefinition::class,'id',false),
             (new ReferenceVersionField(ProductDefinition::class))->addFlags(new Required()),
-            new ManyToOneAssociationField('country','country_id',CountryDefinition::class),
+
             new ManyToOneAssociationField('state','state_id',CountryStateDefinition::class),
             new OneToOneAssociationField('media','media_id', 'id',MediaDefinition::class,true),
-            new ManyToOneAssociationField('product','product_id',ProductDefinition::class,'id',false),
+
             new TranslationsAssociationField(SwagAccountTranslationDefinition::class, 'swag_account_id'),
         ]);
     }

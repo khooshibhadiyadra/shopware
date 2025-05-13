@@ -16,7 +16,7 @@ class CustomerExtension extends EntityExtension
                         new OneToManyAssociationField(
                             'customerId',
                             EventDefinition::class,
-                            'customer_id',
+                            'organized_by_id',
                         )
         );
     }

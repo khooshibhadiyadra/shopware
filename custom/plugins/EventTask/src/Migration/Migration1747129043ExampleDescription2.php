@@ -10,11 +10,11 @@ use Shopware\Core\Framework\Migration\MigrationStep;
  * @internal
  */
 #[Package('core')]
-class Migration1747041405event1 extends MigrationStep
+class Migration1747129043ExampleDescription2 extends MigrationStep
 {
     public function getCreationTimestamp(): int
     {
-        return 1747041405;
+        return 1747129043;
     }
 
     public function update(Connection $connection): void
@@ -80,4 +80,3 @@ CREATE TABLE IF NOT EXISTS `event_category_translation` (
         ');
     }
 }
-

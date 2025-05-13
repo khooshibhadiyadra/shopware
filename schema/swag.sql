@@ -11,11 +11,11 @@ CREATE TABLE `swag_account` (
     PRIMARY KEY (`id`),
     CONSTRAINT `json.swag_account.translated` CHECK (JSON_VALID(`translated`)),
     KEY `fk.swag_account.country_id` (`country_id`),
-    KEY `fk.swag_account.state_id` (`state_id`),
     KEY `fk.swag_account.product_id` (`product_id`,`product_version_id`),
+    KEY `fk.swag_account.state_id` (`state_id`),
     CONSTRAINT `fk.swag_account.country_id` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-    CONSTRAINT `fk.swag_account.state_id` FOREIGN KEY (`state_id`) REFERENCES `country_state` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-    CONSTRAINT `fk.swag_account.product_id` FOREIGN KEY (`product_id`,`product_version_id`) REFERENCES `product` (`id`,`version_id`) ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT `fk.swag_account.product_id` FOREIGN KEY (`product_id`,`product_version_id`) REFERENCES `product` (`id`,`version_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT `fk.swag_account.state_id` FOREIGN KEY (`state_id`) REFERENCES `country_state` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `swag_account_translation` (

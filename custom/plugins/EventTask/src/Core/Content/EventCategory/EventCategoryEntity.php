@@ -6,6 +6,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 
+
 class EventCategoryEntity extends Entity
 {
     use EntityIdTrait;

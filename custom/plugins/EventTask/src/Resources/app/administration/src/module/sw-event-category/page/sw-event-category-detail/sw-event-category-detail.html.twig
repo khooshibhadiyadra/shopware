@@ -9,10 +9,6 @@
             <sw-button :router-link="{name: 'sw.event.category.index'}">
                 {{$tc('cancel')}}
             </sw-button>
-            {#            <sw-button-process :isloading="isLoading" :process-success="process-Success"#}
-            {#                               variant="primary" @process-finish="saveFinish" @click="onClickSave">#}
-            {#                {{$tc('save')}}#}
-            {#            </sw-button-process>#}
             <sw-button-process
                     :isLoading="isLoading"
                     :process-success="process"
