@@ -61,17 +61,16 @@
                             v-model:entityCollection="event.eventCategories"
                     >
                     </sw-entity-multi-select>
+
                     <sw-entity-single-select
-                            size="small"
                             entity="customer"
                             :criteria="customerCriteria"
                             label-property="firstName"
-                            :value="customerId"
+                            :value="event.organizedById"
                             :label="$tc('Organized By')"
                             :placeholder="$tc('Organized By')"
                             show-clearable-button
-                            v-model:entityCollection="event.organizedBy"
-{#                            @save:value="getCustomer"#}
+                            @update:value="event.organizedById=$event"
                     />
                 </sw-card>
             </sw-card-view>

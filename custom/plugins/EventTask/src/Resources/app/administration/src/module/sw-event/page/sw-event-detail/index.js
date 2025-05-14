@@ -36,7 +36,17 @@ export default {
         customerCriteria() {
             const criteria = new Criteria();
             return criteria;
-        }
+        },
+        customerId: {
+            get() {
+                return this.customer ? this.customer.id : '';
+            },
+
+            set(customerId) {
+                if (this.customer) this.customer.id = customerId;
+            },
+        },
+
     },
     watch: {
         eventId() {
@@ -84,15 +94,16 @@ export default {
                 .search(new Criteria(), Shopware.Context.api)
                 .then((result) => {
                     this.eventCategoryOptions = result;
-                    // console.log(result);
                 });
         },
+
         getCustomer() {
             this.customerRepository
                 .search(new Criteria(), Shopware.Context.api)
                 .then((result) => {
-                    // this.customer = result;
+                    this.customer = result;
                     // console.log(result);
+
                 });
         },
         abortOnLanguageChange() {
