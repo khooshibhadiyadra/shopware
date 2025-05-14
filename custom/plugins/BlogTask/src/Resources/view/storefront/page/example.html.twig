@@ -1,0 +1,22 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+   {% block base_content %}
+       <div class="container">
+           {{ 'fdhbk' }}
+           <h3>Blog List</h3>
+           {% for blog in blogs %}
+               <div class="blog-entry p-3 border rounded">
+                   <div class="blog-entry">
+                       <h2>{{ blog.name }}</h2>
+                       <small>Description: {{ blog.description}}</small><br>
+                       <small>Released: {{ blog.releaseDate|date('Y-m-d') }}</small><br>
+                       <small>Author: {{ blog.author }}</small><br>
+                       <small>Status: {{ blog.active ? 'Active' : 'Inactive' }}</small><br><br>
+                   </div>
+               </div>
+           {% else %}
+               <p>no blogs</p>
+           {% endfor %}
+
+       </div>
+   {% endblock %}

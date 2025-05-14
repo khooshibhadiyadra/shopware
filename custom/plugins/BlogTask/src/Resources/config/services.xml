@@ -38,5 +38,24 @@
             <tag name="shopware.entity.extension" />
         </service>
 
+        <service id="BlogTask\Core\Controllers\Storefront\ExampleController" public="true">
+            <argument type="service" id="blog.repository"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig"/>
+            </call>
+        </service>
+
+        <service id="BlogTask\Core\Controllers\Api\BlogController" public="true">
+            <argument type="service" id="blog.repository" />
+            <argument type="service" id="blog_category.repository"/>
+            <tag name="controller.service_arguments"/>
+            <call method="setContainer">
+                <argument id="service_container" type="service" />
+            </call>
+        </service>
+
     </services>
 </container>

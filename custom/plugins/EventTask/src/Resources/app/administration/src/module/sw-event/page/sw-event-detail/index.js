@@ -142,7 +142,6 @@ export default {
                         return;
                     }
                     this.getEvent();
-                    // this.getCustomer();
                 })
                 .catch((exception) => {
                     this.isLoading = false;
