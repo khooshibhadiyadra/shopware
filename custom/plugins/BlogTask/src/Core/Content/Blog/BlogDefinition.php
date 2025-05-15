@@ -18,7 +18,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-class BlogDefinition extends EntityDefinition
+class   BlogDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'blog';
 

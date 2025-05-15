@@ -1,0 +1,41 @@
+{
+  "name": "SwagBasicExampleThemeExtend",
+
+  "author": "Shopware AG",
+  "views": [
+     "@Storefront",
+     "@Plugins",
+     "@SwagBasicExampleThemeExtend"
+  ],
+  "style": [
+    "app/storefront/src/scss/overrides.scss",
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/swag-basic-example-theme-extend/swag-basic-example-theme-extend.js"
+  ],
+  "asset": [
+    "@Storefront",
+    "app/storefront/src/assets"
+  ],
+  "config": {
+    "fields": {
+      "sw-brand-icon": {
+        "type": "url",
+        "editable": true
+      },
+      "sw-advent-calendar-background-color": {
+        "label": {
+          "en-GB": "extended theme",
+          "de-DE": "erweitert Thema"
+        },
+        "type": "color",
+        "value": "#167878",
+        "editable": true
+      }
+
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "name": "SwagBasicExampleTheme",
+  "author": "Shopware AG",
+  "description":{
+    "en-GB": "custom theme",
+    "de-DE": "benutzerdefiniertes Thema"
+  },
+  "views": [
+     "@Storefront",
+     "@Plugins",
+     "@SwagBasicExampleTheme"
+  ],
+  "style": [
+    "app/storefront/src/scss/overrides.scss",
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/swag-basic-example-theme/swag-basic-example-theme.js"
+  ],
+  "asset": [
+    "app/storefront/src/assets"
+  ],
+  "config": {
+    "blocks": {
+      "color": {
+        "themeColor": {
+          "en-GB": "theme colors",
+          "de-DE":"Thema Farben"
+        }
+      }
+    },
+    "sections": {
+      "importantColors": {
+        "label": {
+          "en-GB": "important colors",
+          "de-DE":"wichtig Farben"
+        }
+      }
+    },
+    "tabs": {
+      "colors": {
+        "label": {
+          "en-GB": "colors",
+          "de-DE": "Farben"
+        }
+      }
+    },
+    "fields": {
+      "Select single field": {
+        "label": {
+          "en-GB": "Select a font  size",
+          "de-DE": "Wählen a Schriftart Größe"
+        },
+        "type": "text",
+        "value": "24",
+        "custom": {
+          "componentName": "sw-single-select",
+          "options": [
+            {
+              "value": "15",
+              "label": {
+                "en-GB": "15px",
+                "de-DE": "15px"
+              }
+            },
+            {
+              "value": "20",
+              "label": {
+                "en-GB": "24px",
+                "de-DE": "24px"
+              }
+            },
+            {
+              "value": "22",
+              "label": {
+                "en-GB": "22px",
+                "de-DE": "22px"
+              }
+            }
+          ]
+        },
+        "editable": true,
+        "block": "exampleBlock",
+        "section": "exampleSelection"
+      },
+      "Select Dessert": {
+        "label": {
+          "en-GB": "select dessert",
+          "de-DE":"wählen Nachtisch"
+        },
+        "type": "text",
+        "editable": true,
+        "value": [
+          "waffle",
+          "icrecream"
+        ],
+        "custom": {
+          "componentName": "sw-multi-select",
+          "options": [
+            {
+              "value": "waffle",
+              "label": {
+                "en-GB": "waffle",
+                "de-DE": "Waffel"
+              }
+            },
+            {
+              "value": "icecream",
+              "label": {
+                "en-GB": "icecream",
+                "de-DE": "Eiscreme"
+              }
+            }
+          ]
+        },
+        "block": "exampleBlock",
+        "section": "exampleSelection"
+      }
+    }
+  }
+}
+

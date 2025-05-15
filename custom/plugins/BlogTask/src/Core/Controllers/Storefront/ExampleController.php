@@ -14,23 +14,24 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route(defaults: ['_routeScope' => ['storefront']])]
 class ExampleController extends StorefrontController
 {
-
     private EntityRepository $blogRepository;
-
     public function __construct(EntityRepository $blogRepository)
     {
         $this->blogRepository = $blogRepository;
     }
-
-    #[Route(path: '/hello-world', name: 'storefront.example.show', methods: ['GET'])]
+    #[Route(
+        path: '/hello-world',
+        name: 'storefront.example.show',
+        methods: ['GET']
+    )]
     public function showExample(Context $context): Response
     {
         $blogs = $this->blogRepository->search(new Criteria(), $context)->getEntities();
 
-        return $this->renderStorefront('@BlogTask/storefront/page/example.html.twig', [
-            'example' => 'Hello, shopware 6!',
+        return $this->renderStorefront('@BlogTask/storefront/page/blog.html.twig', [
+            'example' => 'Hello,shopware6!',
             'blogs' => $blogs,
         ]);
-
     }
+
 }

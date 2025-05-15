@@ -5,7 +5,6 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-
         <service id="BlogTask\Core\Content\Blog\BlogDefinition">
             <tag name="shopware.entity.definition" entity="blog" />
         </service>
@@ -38,6 +37,15 @@
             <tag name="shopware.entity.extension" />
         </service>
 
+<!--        <service id="BlogTask\Core\Controllers\Storefront\ExampleController" public="true">-->
+<!--            <argument type="service" id="blog.repository"/>-->
+<!--            <call method="setContainer">-->
+<!--                <argument type="service" id="service_container"/>-->
+<!--            </call>-->
+<!--            <call method="setTwig">-->
+<!--                <argument type="service" id="twig"/>-->
+<!--            </call>-->
+<!--        </service>-->
         <service id="BlogTask\Core\Controllers\Storefront\ExampleController" public="true">
             <argument type="service" id="blog.repository"/>
             <call method="setContainer">
@@ -47,7 +55,6 @@
                 <argument type="service" id="twig"/>
             </call>
         </service>
-
         <service id="BlogTask\Core\Controllers\Api\BlogController" public="true">
             <argument type="service" id="blog.repository" />
             <argument type="service" id="blog_category.repository"/>
@@ -56,6 +63,5 @@
                 <argument id="service_container" type="service" />
             </call>
         </service>
-
     </services>
 </container>
