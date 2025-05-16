@@ -53,8 +53,8 @@
           "en-GB": "Select a font  size",
           "de-DE": "Wählen a Schriftart Größe"
         },
-        "type": "text",
-        "value": "24",
+        "type": "color",
+        "value": "#399",
         "custom": {
           "componentName": "sw-single-select",
           "options": [
