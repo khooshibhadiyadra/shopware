@@ -1,0 +1,103 @@
+{
+  "sw-cms": {
+    "elements": {
+      "general": {
+        "config": {
+          "caption": {
+            "mediaUpload": "Hochladen ein Bild"
+          },
+          "label": {
+            "verticalAlign": "Vertikal ausrichten",
+            "alignment": "Ausrichtung",
+            "verticalAlignTop": "Spitze",
+            "verticalAlignCenter": "Center",
+            "verticalAlignBottom": "Unten",
+            "displayMode": "Anzeige Modus",
+            "displayModeStandard": "Original",
+            "displayModeCover": "Beschnitten",
+            "displayModeStretch": "Skaliert",
+            "displayModeContain": "Behoben Höhe",
+            "autoSlide": "Automatisch Übergang",
+            "autoplayTimeout": "Verzögerung",
+            "speed": "Animation Dauer",
+            "horizontalAlign": "Horizontal ausrichten",
+            "horizontalAlignLeft": "Links",
+            "horizontalAlignCenter": "Center",
+            "horizontalAlignRight": "Rechts"
+          },
+          "helpText": {
+            "autoSlide": "Vorübergehend unbenutzt",
+            "autoplayTimeout": "Dauer sollen bleiben Trotzdem",
+            "speed": "gleiten Geschwindigkeit",
+            "displayMode": "Bild angezeigt"
+          },
+          "tab": {
+            "content": "Inhalt",
+            "settings": "Einstellungen",
+            "options": "Optionen"
+          },
+          "infoText": {
+            "listingElement": "Probe Layout"
+          }
+        },
+        "switch": {
+          "groups": {
+            "all": "Alle elements",
+            "favorites": "Favorit Elemente"
+          }
+        }
+      },
+      "buyButton": {
+        "label": "Buy Button",
+        "infoText": {
+          "tooltipSettingDisabled": "Probe Vorschau"
+        },
+        "config": {
+          "label": {
+            "buttonText": "Taste Text",
+            "redirectLink": "Umleiten Link"
+          },
+          "placeholder": {
+            "buttonText": "Eingeben Taste Text",
+            "redirectLink": "/#"
+          }
+        },
+        "component": {
+          "label": {
+            "actionBuy": "Add to cart",
+            "taxInfo": "Steuerinformationen",
+            "deliveryShippingFree": "Kostenloser Versand",
+            "deliveryTime": "Available, delivery time {name}",
+            "variants": "Variants",
+            "productNumber": "Product number:"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "textImage": {
+        "centerText": {
+          "label": "Three columns, boxed images & text"
+        },
+        "imageText": {
+          "label": "Two columns, boxed image & text"
+        },
+        "imageTextBubble": {
+          "label": "Three columns, captioned & rounded"
+        },
+        "imageTextCover": {
+          "label": "Two columns, full-sized image & text"
+        },
+        "imageTextGallery": {
+          "label": "Three columns, image/text cards"
+        },
+        "imageTextRow": {
+          "label": "Three columns, captioned images"
+        },
+        "textOnImage": {
+          "label": "Hero image"
+        }
+      }
+    }
+  }
+}
