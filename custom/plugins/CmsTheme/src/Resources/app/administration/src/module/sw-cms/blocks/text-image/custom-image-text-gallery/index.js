@@ -2,6 +2,7 @@ import CMS from '../../../constant/sw-cms.constant';
 import "./preview";
 import "./component";
 
+
 Shopware.Service("cmsService").registerCmsBlock({
     name: "custom-image-text-gallery",
     label: "CMS image-text-button block",
@@ -127,7 +128,7 @@ Shopware.Service("cmsService").registerCmsBlock({
                     content: {
                         source: "static",
                         value: `
-              <h2 style="text-align: center;">Block3</h2>
+              <h2 style="text-align: center;">block3</h2>
               <p style="text-align: center;">this is block3</p>
             `.trim(),
                     },

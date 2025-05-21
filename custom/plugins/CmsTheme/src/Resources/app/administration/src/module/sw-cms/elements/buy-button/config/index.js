@@ -14,12 +14,12 @@ Shopware.Component.register("sw-cms-el-config-buy-button", {
     },
 
     methods: {
-        createdComponent() {
+createdComponent(){
             this.initElementConfig("buy-button");
-        },
-
+},
         onChange() {
             this.$emit("element-update", this.element);
         },
     },
+
 });

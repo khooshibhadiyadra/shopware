@@ -5,13 +5,13 @@
   height: 100%;
   width: 100%;
   pointer-events: none;
-  font-size: 25px;
+  font-size: smaller;
   color: darkgrey;
 
   &__placeholder {
     background-color: gray;
     height: 10px;
-    border-radius: 30px;
+    border-radius: 10px;
     margin-bottom: 16px;
     max-width: 150px;
 
@@ -59,7 +59,7 @@
   }
 
   &__variant-title {
-    font-weight: 100;
+    font-weight: bold;
   }
 
   &__variants {
@@ -116,18 +116,18 @@
   &__buy-action {
     display: block;
     line-height: 40px;
-    font-size: 45px;
-    font-weight: 100;
+    font-size: small;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
     color: white;
     background: gray;
-    border-radius: 100px;
+    border-radius: 10px;
   }
 
   &__price {
     font-size: 26px;
-    font-weight: 600;
+    font-weight: bold;
     margin-bottom: 16px;
   }
 

@@ -20,10 +20,10 @@ Shopware.Service("cmsService").registerCmsElement({
             value: "shop",
             required: true,
         },
-        link: {
-            source: "static",
-            value: null,
-        },
+        link:{
+            source:"static",
+            value:null,
+        }
     },
-    collect: Shopware.Service("cmsService").getCollectFunction(),
+    collect:Shopware.Service("cmsService").getCollectFunction(),
 });

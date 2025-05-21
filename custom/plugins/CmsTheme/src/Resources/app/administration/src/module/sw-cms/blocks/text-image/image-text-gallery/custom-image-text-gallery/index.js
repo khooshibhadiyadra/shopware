@@ -1,9 +1,6 @@
 import CMS from '../../../constant/sw-cms.constant';
-// import CMS from '../../../'
-import CMS from '../';
-import "./preview";
-import "./component";
-
+import './preview';
+import './component';
 
 Shopware.Service("cmsService").registerCmsBlock({
     name: "custom-image-text-gallery",
@@ -78,7 +75,9 @@ Shopware.Service("cmsService").registerCmsBlock({
                 },
             },
         },
+
         "center-left-text": {
+
             type: "text",
             default: {
                 config: {

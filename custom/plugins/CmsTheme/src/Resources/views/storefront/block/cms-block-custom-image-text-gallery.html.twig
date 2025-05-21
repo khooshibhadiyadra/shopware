@@ -1,16 +1,15 @@
 {% block block_image_four_row %}
     {% set columns = 4 %}
-
     {% block block_image_four_row_left %}
 
         <div class="col-md-3">
+{#            {{ dump('test') }}#}
             {% block block_image_four_row_left_image %}
                 {% set element = block.slots.getSlot('left-image') %}
                 {% block block_image_four_column_left_inner_image %}
                     {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
                 {% endblock %}
             {% endblock %}
-
             {% block block_image_four_row_left_text %}
                 {% set element = block.slots.getSlot('left-text') %}
                 {% block block_image_four_column_left_inner_text %}
@@ -25,7 +24,6 @@
             {% endblock %}
 
         </div>
-
     {% endblock %}
 
     {% block block_image_text_row_center_left %}
@@ -79,13 +77,13 @@
                 {% set element = block.slots.getSlot('right-text') %}
                 {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
             {% endblock %}
-
             {% block block_image_four_row_right_button %}
                 {% set element = block.slots.getSlot('right-button') %}
                 {% block block_image_four_column_right_inner_button %}
                     {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
                 {% endblock %}
             {% endblock %}
+{#            {{ dump('test') }}#}
         </div>
     {% endblock %}
 {% endblock %}

@@ -12,17 +12,16 @@ Shopware.Component.register("sw-cms-el-buy-button", {
 
     computed: {
         name() {
-            return this.element?.config?.name?.value ?? "shop";
+            return this.element?.config?.name?.value ?? "Shop";
         },
         redirectTo() {
             return this.element.config?.link?.value ?? null;
         },
     },
 
-    created() {
+created(){
         this.createdComponent();
-    },
-
+},
     methods: {
         createdComponent() {
             this.initElementConfig("buy-button");
