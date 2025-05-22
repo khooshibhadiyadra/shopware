@@ -14,11 +14,11 @@ Shopware.Service("cmsService").registerCmsElement({
     previewComponent:"sw-cms-el-preview-buy-button",
     disabledConfigInfoTextKey:
         "sw-cms.elements.buyButton.infoText.tooltipSettingDisabled",
-    defaultConfig: {
-        name: {
-            source: "static",
-            value: "shop",
-            required: true,
+    defaultConfig:{
+        name:{
+            source:"static",
+            value:"shop",
+            required:true,
         },
         link:{
             source:"static",

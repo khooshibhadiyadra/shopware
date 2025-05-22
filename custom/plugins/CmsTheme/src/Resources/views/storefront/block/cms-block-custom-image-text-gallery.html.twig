@@ -51,12 +51,10 @@
                 {% set element = block.slots.getSlot('center-right-image') %}
                 {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
             {% endblock %}
-
             {% block block_image_text_row_center_right_text %}
                 {% set element = block.slots.getSlot('center-right-text') %}
                 {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
             {% endblock %}
-
             {% block block_image_four_row_center_right_button %}
                 {% set element = block.slots.getSlot('center-right-button') %}
                 {% block block_image_four_column_center_right_inner_button %}
@@ -72,7 +70,6 @@
                 {% set element = block.slots.getSlot('right-image') %}
                 {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
             {% endblock %}
-
             {% block block_image_text_row_right_text %}
                 {% set element = block.slots.getSlot('right-text') %}
                 {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
@@ -83,7 +80,7 @@
                     {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
                 {% endblock %}
             {% endblock %}
-{#            {{ dump('test') }}#}
+
         </div>
     {% endblock %}
 {% endblock %}
