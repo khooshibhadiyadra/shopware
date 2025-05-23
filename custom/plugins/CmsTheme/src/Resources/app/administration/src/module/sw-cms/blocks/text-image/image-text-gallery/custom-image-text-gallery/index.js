@@ -1,7 +1,6 @@
 import CMS from '../../../constant/sw-cms.constant';
 import './preview';
 import './component';
-
 Shopware.Service("cmsService").registerCmsBlock({
     name: "custom-image-text-gallery",
     label: "Custom Image Text Gallery Block",

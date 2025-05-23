@@ -8,16 +8,14 @@
   .sw-cms-el-text {
     padding: 20px;
   }
-
   .sw-cms-el-image.is--cover {
-    min-height: 100px;
+    min-height: 20px;
   }
-
   .sw-cms-block-image-text-gallery__left,
   .sw-cms-block-image-text-gallery__center-left,
   .sw-cms-block-image-text-gallery__center-right,
   .sw-cms-block-image-text-gallery__right {
-    box-shadow: 0 0 4px 0 rgba(0, 0, 20%, 20%);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0%, 20%);
   }
 }
 .sw-cms-block-image-text-gallery-shop-button {
