@@ -1,0 +1,22 @@
+.sw-cms-preview-right-text {
+  display:grid;
+  grid-template-columns:0.5fr 0.5fr 1fr 1fr;
+  padding: 15px;
+
+  .sw-cms-preview-right-text__image{
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  .sw-cms-preview-right-text__text{
+    padding:15px;
+    text-align: center;
+    height: 124px;
+  }
+
+  img{
+    display:block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
