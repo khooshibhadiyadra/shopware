@@ -1,4 +1,4 @@
-// import CMS from '../../../constant/sw-cms.constant';
+import CMS from '../../../constant/sw-cms.constant';
 import "./preview";
 import "./component";
 
@@ -37,10 +37,8 @@ Shopware.Service("cmsService").registerCmsBlock({
                     content: {
                         source: "static",
                         value: `
-              <h2 style="text-align: center;">Lorem Ipsum dolor</h2>
-              <p style="text-align: center;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-              sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+              <h2 style="text-align: center;">block 1</h2>
+              <p style="text-align: center;">this is block1</p>
             `.trim(),
                     },
                 },
@@ -84,10 +82,8 @@ Shopware.Service("cmsService").registerCmsBlock({
                     content: {
                         source: "static",
                         value: `
-              <h2 style="text-align: center;">Lorem Ipsum dolor</h2>
-              <p style="text-align: center;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-              sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+              <h2 style="text-align: center;">block 2</h2>
+              <p style="text-align: center;">this is block2</p>
             `.trim(),
                     },
                 },
@@ -131,10 +127,8 @@ Shopware.Service("cmsService").registerCmsBlock({
                     content: {
                         source: "static",
                         value: `
-              <h2 style="text-align: center;">Lorem Ipsum dolor</h2>
-              <p style="text-align: center;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-              sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+              <h2 style="text-align: center;">block 3</h2>
+              <p style="text-align: center;">this is block3</p>
             `.trim(),
                     },
                 },
@@ -178,10 +172,8 @@ Shopware.Service("cmsService").registerCmsBlock({
                     content: {
                         source: "static",
                         value: `
-              <h2 style="text-align: center;">Lorem Ipsum dolor</h2>
-              <p style="text-align: center;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-              sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+              <h2 style="text-align: center;">block 4</h2>
+              <p style="text-align: center;">this is block4</p>
             `.trim(),
                     },
                 },
