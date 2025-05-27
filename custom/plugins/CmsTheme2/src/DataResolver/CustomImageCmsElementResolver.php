@@ -41,33 +41,24 @@ class CustomImageCmsElementResolver extends AbstractCmsElementResolver
         } else {
             array_push($ids, $backgroundImageConfig->getValue());
         }
-
-
         if (count($ids) === 0) {
             return null;
         }
-
         $criteria = new Criteria($ids);
         $criteriaCollection = new CriteriaCollection();
         $criteriaCollection->add('media_' . $slot->getUniqueIdentifier(), MediaDefinition::class, $criteria);
-//var_dump($criteriaCollection);
         return $criteriaCollection;
-//        print_r($criteriaCollection);
     }
-
     public function enrich(CmsSlotEntity $slot, ResolverContext $resolverContext, ElementDataCollection $result): void
     {
         $config = $slot->getFieldConfig();
         $data = new ArrayEntity();
         $data->setUniqueIdentifier(Uuid::randomHex());
         $slot->setData($data);
-print_r($slot);
         $image = new ImageStruct();
         $backgroundImage = new ImageStruct();
-
         $imageConfig = $config->get('media');
         $backgroundImageConfig = $config->get('mobileMedia');
-
         if ($imageConfig && $imageConfig->getValue()) {
             $this->addMediaEntity($slot, $image, $result, $imageConfig, $resolverContext);
         }
@@ -99,7 +90,6 @@ print_r($slot);
 
         if ($config->isStatic()) {
             $image->setMediaId($config->getValue());
-
             $searchResult = $result->get('media_' . $slot->getUniqueIdentifier());
             if (!$searchResult) {
                 return;
@@ -107,11 +97,12 @@ print_r($slot);
 
             /** @var MediaEntity|null $media */
             $media = $searchResult->get($config->getValue());
+
             if (!$media) {
                 return;
             }
-//print_r($media);
             $image->setMedia($media);
         }
     }
 }
+

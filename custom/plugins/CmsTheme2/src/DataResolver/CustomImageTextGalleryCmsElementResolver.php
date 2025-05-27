@@ -26,6 +26,7 @@ class CustomImageTextGalleryCmsElementResolver extends AbstractCmsElementResolve
     public function collect(CmsSlotEntity $slot, ResolverContext $resolverContext): ?CriteriaCollection
     {
         $config = $slot->getFieldConfig();
+//        dd($config);
         $imageConfig = $config->get('media');
         $backgroundImageConfig = $config->get('mobileMedia');
 
@@ -62,6 +63,7 @@ class CustomImageTextGalleryCmsElementResolver extends AbstractCmsElementResolve
         $slot->setData($data);
 
         $image = new ImageStruct();
+//        dd($image);
         $backgroundImage = new ImageStruct();
 
         $imageConfig = $config->get('media');

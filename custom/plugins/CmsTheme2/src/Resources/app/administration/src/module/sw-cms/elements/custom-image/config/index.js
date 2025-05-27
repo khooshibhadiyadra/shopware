@@ -88,7 +88,6 @@ Component.register('sw-cms-el-config-custom-image', {
                 } else {
                     this.element.data = { mediaId, media };
                 }
-
                 return;
             }
             if (this.isCompatEnabled('INSTANCE_SET')) {
