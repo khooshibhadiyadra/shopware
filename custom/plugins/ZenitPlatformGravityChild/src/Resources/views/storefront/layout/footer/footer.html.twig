@@ -1,4 +1,39 @@
 {% sw_extends '@zenit\PlatformGravity/storefront/layout/footer/footer.html.twig' %}
-            {% block zen_layout_footer_navigation_hotline_content %}
-                {{ parent() }}
-            {% endblock %}
+{% block layout_footer_navigation_columns %}
+    {{ parent() }}
+    {% if theme_config('zen-footer-hotline-position') is same as ('column') %}
+        <div class="{{ theme_config('zen-footer-hotline-col') }} {{ theme_config('zen-footer-hotline-col-xl') }} order-{{ theme_config('child-zen-custom-footer-hotline-order') }} footer-column js-footer-column footer-hotline-column">
+        {% if theme_config('zen-footer-logo-position') is same as ('hotline') %}
+            {% set hotlineHiddenClass = 'd-md-none' %}
+        {% endif %}
+
+        {% block zen_layout_footer_navigation_hotline_headline_logo %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% if theme_config('zen-footer-hotline-collapse-state') %}
+            {% set hotlineShowClass = 'show' %}
+        {% endif %}
+
+        {% block zen_layout_footer_navigation_hotline_headline_two %}
+            <div class="{{ hotlineHiddenClass }} footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger {{ hotlineShowClass }}" id="collapseFooterHotlineTitle" data-bs-target="#collapseFooterHotline" aria-expanded="true" aria-controls="collapseFooterHotline" role="listitem">
+                {{ 'service hotline 2'|trans|sw_sanitize }}
+                {% block zen_layout_footer_navigation_hotline_icons %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
+        {% endblock %}
+        {% block zen_layout_footer_navigation_hotline_content_two %}
+            <div class="col text-justify border border-dark border-2">
+                <h4 class="text-danger">Text Justify Alignment</h4>
+                <p>
+                    Bootstrap is a popular open-source CSS
+                    framework for developing responsive and
+                    mobile-first web pages. It simplifies the
+                    web development process by providing a set
+                    of pre-designed components and utilities.
+                </p>
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}
