@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
+    {% block element_product_description_reviews_tabs_navigation_review %}
+        {{ parent() }}
+        {% set toggle = element.data.product.customFields['get_toggle'] %}
+        {% set toggleTabId = "description-tab-" ~ product.id %}
+        {% set toggleTabHref = "#description-tab-" ~ product.id ~ "-pane" %}
+        {% set toggleTabContent = "description-tab-" ~ product.id ~ "-pane" %}
+        {% set descriptionContent="get_description-tab-" ~product.id ~ "-pane" %}
+        {% set imageId=product.customFields['swag_example_set_mediaget_image'] %}
+        {% set myMedia=searchMedia([imageId],context.context) %}
+        {% set mediaEntity=myMedia.first() %}
+    {% if toggle=='true' %}
+            Description:{{product.customFields.get_description }}
+        {% if mediaEntity %}
+           Media: <img src="{{ mediaEntity.url }}" alt="mediaEntity.name" height="100px" width="100px">
+        {% endif%}
+    {% endif %}
+{% endblock %}
+
