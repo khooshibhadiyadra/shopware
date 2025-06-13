@@ -1,0 +1,33 @@
+{
+  "product-review-configuration": {
+    "fields": {
+      "pluginActive": "Aktiv",
+      "displayImageField": "Bild-Upload",
+      "allowImageFileExtension": "Bilddateierweiterung zulassen",
+      "maximumFileSizeforImage": "Maximale Dateigröße für das Bild (MB)",
+      "allowVideoFileExtension": "Video-Dateierweiterung zulassen",
+      "maximumFileSizeForVideo": "Maximale Dateigröße für Videos (MB)",
+      "helpText": {
+        "pluginActive": "Aktivieren Sie das Plugin",
+        "displayImageField": "Bildfeld im Schaufenster anzeigen",
+        "maximumFileSizeforImage": "Maximale Größe der hochgeladenen Datei: \"{maxUploadFileSize}\".",
+        "maximumFileSizeForVideo": "Maximale Größe der hochgeladenen Datei: \"{maxUploadFileSize}\"."
+      }
+    },
+    "title": "Plugin-Konfiguration",
+    "header": "Produktbewertung mit Echtbild und Video-Upload",
+    "action": {
+      "titleSaveSuccess": "Erfolg",
+      "messageSaveSuccess": "Details erfolgreich gespeichert",
+      "titleSaveError": "Das Feld ist erforderlich",
+      "messageSaveImageFileExtentionError": "Das Feld für die Erweiterung der Bilddatei ist erforderlich",
+      "messageSaveImageFileSizeError": "Maximale Dateigröße für Bild Feld ist erforderlich",
+      "messageSaveVideoFileExtentionError": "Das Feld für die Videodateierweiterung ist erforderlich",
+      "messageSaveVideoFileSizeError": "Maximale Dateigröße für Video Feld ist erforderlich"
+    },
+    "general": {
+      "mainMenuItemGeneral": "Produktbewertung mit Echtbild und Video-Upload",
+      "descriptionTextModule": "Speichern Sie description english"
+    }
+  }
+}

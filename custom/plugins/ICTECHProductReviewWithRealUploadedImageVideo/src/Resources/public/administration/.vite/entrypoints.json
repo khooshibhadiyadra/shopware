@@ -1,0 +1,23 @@
+{
+  "base": "/bundles/ictechproductreviewwithrealuploadedimagevideo/administration/",
+  "entryPoints": {
+    "i-c-t-e-c-h-product-review-with-real-uploaded-image-video": {
+      "css": [],
+      "dynamic": [],
+      "js": [
+        "/bundles/ictechproductreviewwithrealuploadedimagevideo/administration/assets/i-c-t-e-c-h-product-review-with-real-uploaded-image-video-DhmpRX2B.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}

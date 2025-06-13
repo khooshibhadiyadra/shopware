@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Aliases for abstract classes -->
+        <service id="Shopware\Core\Content\Product\SalesChannel\FindVariant\AbstractFindProductVariantRoute"
+                 alias="Shopware\Core\Content\Product\SalesChannel\FindVariant\FindProductVariantRoute" />
+
+        <service id="Shopware\Core\Content\Product\SalesChannel\Review\AbstractProductReviewSaveRoute"
+                 alias="Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewSaveRoute" />
+
+        <service id="Shopware\Core\Content\Product\SalesChannel\Review\AbstractProductReviewLoader"
+                 alias="Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewLoader" />
+
+        <!-- Custom controller -->
+        <service id="ICTECHProductReviewWithRealUploadedImageVideo\Storefront\Controller\ProductController"
+                 public="true"
+                 autowire="true"
+                 autoconfigure="true">
+            <tag name="controller.service_arguments" />
+        </service>
+
+        <!-- Custom decorated service -->
+        <service id="ICTECHProductReviewWithRealUploadedImageVideo\Core\Content\Product\SalesChannel\Review\ICTECHProductReviewSaveRoute"
+                 decorates="Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewSaveRoute"
+                 decoration-inner-name="ICTECHProductReviewSaveRoute.inner"
+                 public="true">
+
+            <argument type="service" id="Shopware\Storefront\Page\Product\ProductPageLoader"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\FindVariant\FindProductVariantRoute"/>
+            <argument type="service" id="Shopware\Storefront\Page\Product\QuickView\MinimalQuickViewPageLoader"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewSaveRoute"/>
+            <argument type="service" id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileNameProvider"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewLoader"/>
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="media_folder.repository"/>
+            <argument type="service" id="logger"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <!-- Secondary decoration (not needed if covered above) -->
+        <service id="ICTECHProductReviewWithRealUploadedImageVideo\Core\Content\Product\SalesChannel\Review\ICTECHProductReviewSaveRoute"
+                 decorates="Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewSaveRoute"
+                 public="true">
+            <argument type="service" id="product_review.repository"/>
+            <argument type="service" id="Shopware\Core\Framework\Validation\DataValidator"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="event_dispatcher"/>
+
+        </service>
+    </services>
+</container>

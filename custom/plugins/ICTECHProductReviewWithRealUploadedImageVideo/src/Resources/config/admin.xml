@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<admin>
+    <script>Resources/app/administration/src/main.js</script>
+</admin>

@@ -1,0 +1,311 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/review/review-form.html.twig' %}
+
+{% block page_product_detail_review_form_form %}
+<form class="review-form"
+      id="review-form"
+      action="{{ path('frontend.detail.review.save', { productId: reviews.productId }) }}"
+      method="post"
+      enctype="multipart/form-data"
+      data-ictech-product-review
+      data-form-validation="true"
+      data-form-ajax-submit="true"
+      data-form-ajax-submit-options='{{ formAjaxSubmitOptions|json_encode }}' enctype="multipart/form-data">
+
+    {% block page_product_detail_review_form_forward %}
+        <input type="hidden"
+               name="forwardTo"
+               value="frontend.product.reviews">
+
+        <input type="hidden"
+               name="parentId"
+               value="{{ reviews.parentId is not null ? reviews.parentId : reviews.productId }}">
+
+        <input type="hidden"
+               name="forwardParameters"
+               value='{"productId": "{{ reviews.productId }}"}'>
+    {% endblock %}
+
+    {% if reviews.customerReview %}
+        <input type="hidden" name="id" value="{{ reviews.customerReview.id }}">
+    {% endif %}
+
+    {% block page_product_detail_review_form_details %}
+        <div class="row g-2">
+            {% block page_product_detail_review_form_rating %}
+                <div class="form-group col-md-4 product-detail-review-form-rating">
+                    <label for="#review-form-rating">
+                        {{ "detail.reviewFormRatingLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+                    </label>
+
+                    <div id="review-form-rating"
+                         class="product-detail-review-form-rating-input"
+                         data-rating-system="true">
+                        {% if data.get('points') is not empty %}
+                            {% set currentPoints = data.get('points')|number_format %}
+                        {% else %}
+                            {% set currentPoints = reviews.matrix.maxPoints %}
+                        {% endif %}
+
+                        {% set maxPoints = reviews.matrix.maxPoints %}
+
+                        {% for point in 1..maxPoints %}
+                            <label data-review-form-point="{{ point }}"
+                                   class="product-detail-review-form-star{% if currentPoints >= point %} is-active{% endif %}">
+                                <input class="product-detail-review-form-radio"
+                                       type="radio"
+                                       name="points"
+                                       value="{{ point }}"
+                                        {% if currentPoints >= point %} checked="checked"{% endif %}>
+
+                                {% sw_include '@Storefront/storefront/component/review/point.html.twig' with {
+                                    type: 'blank'
+                                } %}
+                            </label>
+                        {% endfor %}
+                        {% for matrix in reviews.matrix.matrix %}
+                            <p class="h6 product-detail-review-form-rating-text {% if currentPoints != matrix.points %} d-none{% endif %}"
+                               data-rating-text="{{ matrix.points }}">
+                                {{ "detail.review#{matrix.points}PointRatingText"|trans|sw_sanitize }}
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block page_product_detail_review_form_title %}
+                <div class="form-group col-12 product-detail-review-form-title">
+                    {% block page_product_detail_review_form_title_label %}
+                        <label class="form-label" for="reviewTitle">
+                            {{ "detail.reviewFormTitleLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+                        </label>
+                    {% endblock %}
+
+                    {% block page_product_detail_review_form_title_input %}
+                        <input type="text"
+                               class="form-control
+                               {% if data.get('title') is empty %}
+                                        {% if formViolations.getViolations('/title') %} is-invalid{% endif %}
+                                {% endif %}"
+                               id="reviewTitle"
+                               placeholder="{{ "detail.reviewFormTitlePlaceholder"|trans|striptags }}"
+                               name="title"
+                               value="{{ data.get('title') }}"
+                               required="required"
+                               minlength="5">
+                    {% endblock %}
+
+                    {% block page_product_detail_review_form_title_violation %}
+                        {% if formViolations.getViolations('/title') is not empty %}
+                            {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' with {
+                                violationPath: '/title'
+                            } %}
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block page_product_detail_review_form_content %}
+        <div class="form-group product-detail-review-form-content">
+            {% block page_product_detail_review_form_content_label %}
+                <label for="reviewContent">
+                    {{ "detail.reviewFormContentLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+                </label>
+            {% endblock %}
+
+            {% block page_product_detail_review_form_content_textarea %}
+                <textarea class="form-control
+                          {% if data.get('content') is empty %}
+                                  {% if formViolations.getViolations('/content') %} is-invalid{% endif %}
+                          {% endif %}"
+                          id="reviewContent"
+                          name="content"
+                          placeholder="{{ "detail.reviewFormContentPlaceholder"|trans|striptags }}"
+                          required="required"
+                          minlength="40"
+                          rows="8">{% if data.get('content') is not empty %}{{ data.get('content') }}{% endif %}
+
+                </textarea>
+            {% endblock %}
+
+            {% block page_product_detail_review_form_content_violation %}
+                {% if formViolations.getViolations('/content') is not empty %}
+                    {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' with {
+                        violationPath: '/content'
+                    } %}
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block page_product_detail_review_form_image %}
+    {% if config('ICTECHProductReviewWithRealUploadedImageVideo.config.pluginActive') == true && config('ICTECHProductReviewWithRealUploadedImageVideo.config.displayImageField') == true %}
+    <div class="product-detail-review-form-preview-image">
+        {% if data.customFields.ICTECHImageVideoData %}
+            {% if data.customFields.ICTECHImageVideoData.image %}
+                {% set mediaImage = searchMedia([data.customFields.ICTECHImageVideoData.image], context.context) %}
+
+                {% if mediaImage %}
+{#                     @var item \Shopware\Core\Content\Media\MediaEntity#}
+                    {% for item in mediaImage %}
+                        <div class="image-preview-block">
+                            <img src="{{ item.url }}" height="50%" width="50%" class="preview-image"/>
+                            <span class="remove-image remove-preview-media" ICTECHProductReview type='button'>
+                                            <svg id="meteor-icon-kit__regular-trash" viewBox="0 0 20 24" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"
+                                                                                          clip-rule="evenodd"
+                                                                                          d="M3 21C3 21.5523 3.44772 22 4 22H16C16.5523 22 17 21.5523 17 21V9H3V21zM15 3H17C18.6569 3 20 4.34315 20 6V8C20 8.55229 19.5523 9 19 9V21C19 22.6569 17.6569 24 16 24H4C2.34315 24 1 22.6569 1 21V9C0.44772 9 0 8.55229 0 8V6C0 4.34315 1.34315 3 3 3H5C5 1.34315 6.34315 0 8 0H12C13.6569 0 15 1.34315 15 3zM5 13C5 12.4477 5.44772 12 6 12C6.55228 12 7 12.4477 7 13V18C7 18.5523 6.55228 19 6 19C5.44772 19 5 18.5523 5 18V13zM9 13C9 12.4477 9.4477 12 10 12C10.5523 12 11 12.4477 11 13V18C11 18.5523 10.5523 19 10 19C9.4477 19 9 18.5523 9 18V13zM13 13C13 12.4477 13.4477 12 14 12C14.5523 12 15 12.4477 15 13V18C15 18.5523 14.5523 19 14 19C13.4477 19 13 18.5523 13 18V13zM8 2C7.44772 2 7 2.44772 7 3H13C13 2.44772 12.5523 2 12 2H8zM2 7H18V6C18 5.44772 17.5523 5 17 5H3C2.44772 5 2 5.44772 2 6V7z"
+                                                                                          fill="#758CA3"></path>
+                                            </svg>
+                             </span>
+                        </div>
+                        <input type="hidden" name="previewImage" value="{{ data.customFields.ICTECHImageVideoData.image }}">
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="form-group product-detail-review-form-image">
+        {% set allowImageFileExtensionArray = config('ICTECHProductReviewWithRealUploadedImageVideo.config.allowImageFileExtension') %}
+        {% set allowImageFileExtension = "" %}
+        {% set allowImageFileExtensionSnippet = "" %}
+
+        {% for allowImageFileExtensionValue in allowImageFileExtensionArray %}
+            {% set allowImageFileExtension = allowImageFileExtension ~ '.' ~ allowImageFileExtensionValue ~ ', ' %}
+            {% set allowImageFileExtensionSnippet = allowImageFileExtensionValue ~ ', ' ~ allowImageFileExtensionSnippet %}
+        {% endfor %}
+
+        {% set allowImageFileExtension = allowImageFileExtension|trim(', ') %}
+        {% set allowImageFileExtensionSnippet = allowImageFileExtensionSnippet|trim(', ') %}
+
+        {% block page_product_detail_review_form_image_label %}
+            <label for="reviewImage">
+                {{ "detail.reviewFormImageLabel"|trans({'%allowImageExtentions%': allowImageFileExtensionSnippet})|sw_sanitize }}
+            </label>
+        {% endblock %}
+        {% block page_product_detail_review_form_image_input %}
+            <input type="file" name="image"
+                   accept="{{ allowImageFileExtension }}" {% if data.customFields.ICTECHImageVideoData.image is empty %}required{% endif %}>
+            <input class="max-upload-image-size" type="hidden" name="maxUploadImageSize"
+                   value="{{ config('ICTECHProductReviewWithRealUploadedImageVideo.config.maximumFileSizeforImage') }}">
+            <input class="max-upload-image-extension" type="hidden" name="allowImageFileExtension"
+                   value="{{ config('ICTECHProductReviewWithRealUploadedImageVideo.config.allowImageFileExtension')|json_encode() }}">
+
+
+            <div class="invalid-feedback error-message-image">
+                {{ "detail.validationMessage.image" | trans |sw_sanitize }}</div>
+            <div class="invalid-feedback error-message-max-upload-image">
+                {{ "detail.maxSizeValidationMessage.image"|trans({'%maxUploadImageFilesize%': config('ICTECHProductReviewWithRealUploadedImageVideo.config.maximumFileSizeforImage')})|sw_sanitize }}</div>
+
+
+        {% endblock %}
+
+    </div>
+    {% endif %}
+    {% endblock %}
+
+    {% block page_product_detail_review_form_video %}
+        {% if config('ICTECHProductReviewWithRealUploadedImageVideo.config.pluginActive') == true %}
+            <div class="product-detail-review-form-preview-video-block">
+                {% if data.customFields.ICTECHImageVideoData %}
+                    {% if data.customFields.ICTECHImageVideoData.video %}
+                        {% set mediaVideo = searchMedia([data.customFields.ICTECHImageVideoData.video], context.context) %}
+
+                        {% if mediaVideo %}
+{#                             @var item \Shopware\Core\Content\Media\MediaEntity#}
+                            {% for item in mediaVideo %}
+                                <div class="product-detail-review-form-preview-video">
+                                    <div class="video-preview-block">
+                                        <video width="400" preload="metadata">
+                                            <source src="{{ item.url }}#t=0.1" type="video/mp4" class="preview-video" >
+                                        </video>
+                                    </div>
+                                    <span class="remove-video remove-preview-media" ICTECHProductReview type='button'
+                                          id="video-remove">
+                                    <svg id="meteor-icon-kit__regular-trash" viewBox="0 0 20 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"
+                                                                                  clip-rule="evenodd"
+                                                                                  d="M3 21C3 21.5523 3.44772 22 4 22H16C16.5523 22 17 21.5523 17 21V9H3V21zM15 3H17C18.6569 3 20 4.34315 20 6V8C20 8.55229 19.5523 9 19 9V21C19 22.6569 17.6569 24 16 24H4C2.34315 24 1 22.6569 1 21V9C0.44772 9 0 8.55229 0 8V6C0 4.34315 1.34315 3 3 3H5C5 1.34315 6.34315 0 8 0H12C13.6569 0 15 1.34315 15 3zM5 13C5 12.4477 5.44772 12 6 12C6.55228 12 7 12.4477 7 13V18C7 18.5523 6.55228 19 6 19C5.44772 19 5 18.5523 5 18V13zM9 13C9 12.4477 9.4477 12 10 12C10.5523 12 11 12.4477 11 13V18C11 18.5523 10.5523 19 10 19C9.4477 19 9 18.5523 9 18V13zM13 13C13 12.4477 13.4477 12 14 12C14.5523 12 15 12.4477 15 13V18C15 18.5523 14.5523 19 14 19C13.4477 19 13 18.5523 13 18V13zM8 2C7.44772 2 7 2.44772 7 3H13C13 2.44772 12.5523 2 12 2H8zM2 7H18V6C18 5.44772 17.5523 5 17 5H3C2.44772 5 2 5.44772 2 6V7z"
+                                                                                  fill="#758CA3"></path>
+                                    </svg>
+                                    </span>
+                                </div>
+                                <input type="hidden" name="previewVideo"
+                                       value="{{ data.customFields.ICTECHImageVideoData.video }}">
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <div class="form-group product-detail-review-form-video">
+                {% set allowVideoFileExtensionArray = config('ICTECHProductReviewWithRealUploadedImageVideo.config.allowVideoFileExtension') %}
+                {% set allowVideoFileExtension = "" %}
+                {% set allowVideoFileExtensionSnippet = "" %}
+
+                {% for allowVideoFileExtensionValue in allowVideoFileExtensionArray %}
+                    {% set allowVideoFileExtension = allowVideoFileExtension ~ '.' ~ allowVideoFileExtensionValue ~ ', ' %}
+                    {% set allowVideoFileExtensionSnippet = allowVideoFileExtensionValue ~ ', ' ~ allowVideoFileExtensionSnippet %}
+                {% endfor %}
+
+                {% set allowVideoFileExtension = allowVideoFileExtension|trim(', ') %}
+                {% set allowVideoFileExtensionSnippet = allowVideoFileExtensionSnippet|trim(', ') %}
+
+                {% block page_product_detail_review_form_video_label %}
+                    <label for="reviewVideo">
+                        {{ "detail.reviewFormVideoLabel"|trans({'%allowVideoExtentions%': allowVideoFileExtensionSnippet})|sw_sanitize }}
+                    </label>
+                {% endblock %}
+
+                {% block page_product_detail_review_form_video_input %}
+                    <input class="form-control product-review-video" type="file" name="video"
+                           accept="{{ allowVideoFileExtension }}" required>
+                    <input class="max-upload-video-size" type="hidden" name="maxUploadVideoSize"
+                           value="{{ config('ICTECHProductReviewWithRealUploadedImageVideo.config.maximumFileSizeForVideo') }}">
+                    <input class="max-upload-video-extension" type="hidden" name="allowVideoFileExtension"
+                           value="{{ config('ICTECHProductReviewWithRealUploadedImageVideo.config.allowVideoFileExtension')|json_encode() }}">
+
+                    <div class="invalid-feedback error-message-video">
+                        {{ "detail.validationMessage.video" |trans | sw_sanitize }}</div>
+                    <div class="invalid-feedback error-message-max-upload-video">
+                        {{ "detail.maxSizeValidationMessage.video"|trans({'%maxUploadVideoFilesize%': config('ICTECHProductReviewWithRealUploadedImageVideo.config.maximumFileSizeForVideo')})|sw_sanitize }}</div>
+
+                {% endblock %}
+
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block page_product_detail_review_form_footer %}
+        <div class="product-detail-review-form-footer">
+            {% block page_product_detail_review_form_required %}
+                <p class="required-fields">
+                    {{ "general.requiredFields"|trans|sw_sanitize }}
+                </p>
+            {% endblock %}
+
+            <div class="product-detail-review-form-actions">
+                {% block page_product_detail_review_form_cancel %}
+                    <a href="#"
+                       class="btn btn-outline-secondary product-detail-review-cancel"
+                       data-bs-toggle="collapse"
+                       data-bs-target=".multi-collapse"
+                       aria-expanded="false"
+                       aria-controls="review-form review-list">
+                        {{ "detail.reviewFormCancelText"|trans|sw_sanitize }}
+                    </a>
+                {% endblock %}
+
+                {% block page_product_detail_review_form_submit %}
+                    <button type="submit"
+                            class="btn btn-primary btn-review-submit">
+                        {{ "detail.reviewFormSubmitText"|trans|sw_sanitize }}
+                    </button>
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+</form>
+{% endblock %}

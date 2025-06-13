@@ -1,0 +1,14 @@
+{
+  "detail": {
+    "reviewFormImageLabel": "Bild-Upload* (ermöglichen %allowImageExtentions%)",
+    "reviewFormVideoLabel": "Video-Upload* (ermöglichen %allowVideoExtentions%)",
+    "validationMessage": {
+      "image": "Fehler: Es sind nur Dateien mit gültigen Bilddateiendungen zulässig..",
+      "video": "Fehler: Es sind nur gültige Videodateien zulässig.."
+    },
+    "maxSizeValidationMessage": {
+      "image": "Datei ist groß, bitte wählen Sie eine Datei mit weniger als %maxUploadImageFilesize%mb",
+      "video": "Datei ist groß, bitte wählen Sie eine Datei mit weniger als %maxUploadVideoFilesize%mb"
+    }
+  }
+}

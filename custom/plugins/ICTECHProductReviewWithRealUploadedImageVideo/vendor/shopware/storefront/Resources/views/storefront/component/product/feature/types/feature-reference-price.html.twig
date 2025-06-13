@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/product/feature/base.html.twig' %}
+
+{% block component_product_feature_list_item_base_content_label %}
+    {{ 'component.product.feature.label.%s'|format(label)|sw_sanitize|trans }}
+{% endblock %}
+
+{% block component_product_feature_list_item_base_content_value %}
+    {{ value.purchaseUnit|sw_sanitize }} {{ value.unitName|sw_sanitize }}
+    {# @deprecated tag:v6.7.0 - Showing asterisk next to every price is deprecated. Tax and shipping info is already displayed in the shopping cart summary. #}
+    ({{ value.price|currency }}{% if not feature('ACCESSIBILITY_TWEAKS') %}{{ 'general.star'|trans }}{% endif %} / {{ value.referenceUnit|sw_sanitize }} {{ value.unitName|sw_sanitize }})
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+  "detail": {
+    "reviewFormImageLabel": "Image Upload* (allow %allowImageExtentions%)",
+    "reviewFormVideoLabel": "Video Upload* (allow %allowVideoExtentions%)",
+    "validationMessage": {
+      "image": "Error: Only valid image extension files are allowed.",
+      "video": "Error: Only valid video extension files are allowed."
+    },
+    "maxSizeValidationMessage": {
+      "image": "File is big, please select a file less than %maxUploadImageFilesize%mb",
+      "video": "File is big, please select a file less than %maxUploadVideoFilesize%mb"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{% block sw_custsomer_card_metadata_customer_name_label %}
+<div class="sw-review-detail__metadata-review-headline">
+    <sw-container
+            columns="auto 150px"
+            gap="0px 15px"
+    >
+        <div class="sw-review-detail__metadata-review-title">
+            {{ review.title }}
+        </div>
+        <div
+                v-if="stars"
+                class="sw-review-detail__metadata-review-stars"
+        >
+            <sw-rating-stars
+                    :value="review.points"
+                    class="star-count-display"
+            />
+            <div class="star-count-description">
+                {{ $tc(`sw-review.detail.review${Math.round(stars)}PointRatingText`) }}
+            </div>
+        </div>
+    </sw-container>
+</div>
+<p class="sw-review-detail__metadata-review-content">
+    {{ review.content }}
+</p>
+<!-- Display Image link -->
+<div v-if="imageData" class="view-image-link">
+    <sw-external-link :small="false" icon="regular-external-link-s" rel="noopener" :href="imageData.url">
+        {{ $tc(`sw-review.detail.viewImageText`) }}
+    </sw-external-link>
+</div>
+<!-- Display Video link -->
+<div v-if="videoData" class="view-video-link">
+    <sw-external-link :small="false" icon="regular-external-link-s" rel="noopener" :href="videoData.url">
+        {{ $tc(`sw-review.detail.viewVideoText`) }}
+    </sw-external-link>
+</div>
+{% endblock %}
+    

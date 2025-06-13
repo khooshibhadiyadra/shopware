@@ -1,0 +1,11 @@
+{% block sw_first_run_wizard_shopware_base %}
+<router-view
+    v-slot="{ Component }"
+>
+    <component
+        :is="Component"
+        v-bind="filteredAttributes"
+        v-on="listeners"
+    />
+</router-view>
+{% endblock %}

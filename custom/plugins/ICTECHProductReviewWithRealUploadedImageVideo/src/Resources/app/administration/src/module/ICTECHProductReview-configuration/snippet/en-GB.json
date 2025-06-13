@@ -1,0 +1,33 @@
+{
+  "product-review-configuration": {
+    "fields": {
+      "pluginActive": "Active",
+      "displayImageField": "Image Upload",
+      "allowImageFileExtension": "Allow Image file extension",
+      "maximumFileSizeforImage": "Maximum file size for image(MB)",
+      "allowVideoFileExtension": "Allow Video file extension",
+      "maximumFileSizeForVideo": "Maximum file size for video(MB)",
+      "helpText": {
+        "pluginActive": "Activate the plugin",
+        "displayImageField": "Display Image field at storefront",
+        "maximumFileSizeforImage": "Maximum upload file size: \"{maxUploadFileSize}\".",
+        "maximumFileSizeForVideo": "Maximum upload file size: \"{maxUploadFileSize}\"."
+      }
+    },
+    "title": "Plugin Configuration",
+    "header": "Product review with the real image and video upload",
+    "action": {
+      "titleSaveSuccess": "Success",
+      "messageSaveSuccess": "Details saved successfully",
+      "titleSaveError": "The field is required",
+      "messageSaveImageFileExtentionError": "Image file extension field is required",
+      "messageSaveImageFileSizeError": "Maximum file size for image Field is required",
+      "messageSaveVideoFileExtentionError": "Video file extension field is required",
+      "messageSaveVideoFileSizeError": "Maximum file size for video Field is required"
+    },
+    "general": {
+      "mainMenuItemGeneral": "Product review with the real image and video upload",
+      "descriptionTextModule": "Speichern Sie description english"
+    }
+  }
+}
